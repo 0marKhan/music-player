@@ -1,0 +1,231 @@
+.main-container {
+  width: 100%;
+}
+
+.nav-card-container {
+  display: flex;
+}
+
+.cards-side {
+  border-radius: 5px;
+  margin: 0.7rem 0 1rem 0;
+  padding: 1rem;
+  background-color: #242323;
+}
+
+.nav-side {
+  width: 10rem;
+  border-radius: 5px;
+  margin: 0.7rem 0.7rem 1rem 2rem;
+  padding: 1rem;
+  background-color: #242323;
+}
+
+.search-playlist {
+  margin: 1rem 2rem 0 2rem;
+  border-radius: 5px;
+  padding: 1rem;
+  background-color: #242323;
+  width: 92%;
+  display: flex;
+  justify-content: center;
+}
+
+.lotte-anime {
+  width: 15rem;
+  height: 15rem;
+  margin-left: 3rem;
+}
+
+.playlist-container,
+.liked-songs-container {
+  display: flex;
+  justify-content: center;
+}
+
+.playlist-container {
+  margin-top: 2rem;
+}
+
+.liked-songs-container {
+  margin-top: 0.7rem;
+}
+
+.playlists,
+.liked-songs {
+  width: 45rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0rem;
+  justify-content: center;
+}
+
+.instructions-heading {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  margin-top: 4rem;
+}
+
+.bottom-nav {
+  display: none;
+}
+
+.instruction-text {
+  color: #fff;
+  font-size: small;
+  line-height: 1.5rem;
+  margin: 0 1rem 0 1rem;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+@media (min-device-width: 1280px) and (min-device-height: 800px) {
+  .instructions-heading {
+    margin-right: 1rem;
+  }
+  .instruction-text {
+    margin-right: 2rem;
+  }
+}
+
+@media (max-width: 1279px) {
+  .instructions {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav-card-container {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .search-playlist {
+    width: 85%;
+    background: none;
+  }
+
+  .nav-side {
+    background: none;
+    width: 10rem;
+    margin-bottom: 0;
+  }
+
+  .cards-side {
+    margin-top: 0;
+
+    background: none;
+  }
+}
+
+@media (max-width: 818px) {
+  .lotte-anime {
+    display: none;
+  }
+
+  .playlists {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+  }
+
+  .liked-songs-container {
+    margin-top: 0;
+  }
+
+  .liked-songs {
+    width: 30rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .cards-side {
+    width: 28rem;
+  }
+}
+
+@media screen and (device-width: 768px) and (device-height: 1024px) and (orientation: portrait) {
+  .playlists,
+  .liked-songs {
+    width: 45rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0rem;
+    justify-content: center;
+  }
+  .lotte-anime {
+    display: block;
+    margin-right: 5rem;
+    width: 15rem;
+  }
+}
+
+@media screen and (max-width: 431px) {
+  .search-playlist {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+  }
+  .cards-side {
+    width: 20rem;
+    margin-bottom: 5rem;
+  }
+
+  .nav-side {
+    display: none;
+  }
+
+  .bottom-nav {
+    display: block;
+  }
+}
+
+@media (max-width: 415px) {
+  .nav-side {
+    display: none;
+  }
+
+  .main-container,
+  .nav-card-container {
+    margin: 0;
+    width: 100%;
+  }
+
+  .cards-side {
+    width: 20rem;
+    margin-bottom: 5rem;
+  }
+
+  .search-playlist {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+  }
+
+  .bottom-nav {
+    display: block;
+  }
+
+  .playlists {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 376px) {
+  .cards-side {
+    padding: 0;
+    margin-bottom: 5rem;
+  }
+}
+
+@media (max-width: 361px) {
+  .cards-side {
+    margin-bottom: 5rem;
+  }
+}

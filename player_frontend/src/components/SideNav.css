@@ -1,0 +1,38 @@
+.side-nav-card {
+  width: 12rem;
+}
+
+.left-nav {
+  width: 10rem;
+  list-style: none;
+  color: #fff;
+  padding: 0 0 0 1.5rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.nav-item {
+  display: flex;
+  margin-top: 1.5rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  color: #e30085;
+}
+
+.nav-content {
+  padding-left: 0.5rem;
+}
+
+@media (max-width: 1021px) {
+  .left-nav {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .nav-content {
+    width: 6rem;
+  }
+}

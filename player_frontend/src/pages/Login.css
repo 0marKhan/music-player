@@ -1,0 +1,66 @@
+.roam-logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.login-button {
+  margin-top: 1.5rem;
+}
+
+img {
+  width: 6rem;
+}
+
+.forgot-password {
+  margin-top: 1rem;
+}
+
+a {
+  color: #fff;
+}
+
+a:hover {
+  color: #e30085;
+}
+
+.text-with-link {
+  color: #cccccc;
+  margin-right: 0.5rem;
+}
+
+@media only screen and (device-width: 912px) and (device-height: 1368px) and (-webkit-device-pixel-ratio: 2) {
+  .roam-logo {
+    margin: 20rem 0 2rem 0;
+  }
+}
+
+@media only screen and (device-width: 820px) and (device-height: 1180px) and (-webkit-device-pixel-ratio: 2) {
+  .roam-logo {
+    margin: 17rem 0 2rem 0;
+  }
+}
+
+@media only screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) {
+  .roam-logo {
+    margin: 13rem 0 2rem 0;
+  }
+}
+
+@media only screen and (device-width: 540px) and (device-height: 720px) {
+  .roam-logo {
+    margin: 8rem 0 2rem 0;
+  }
+}
+@media (max-width: 415px) {
+  .roam-logo {
+    margin: 8rem 0 2rem 0;
+  }
+}

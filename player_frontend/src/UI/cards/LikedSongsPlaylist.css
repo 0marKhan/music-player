@@ -1,0 +1,40 @@
+.liked-songs-card {
+  display: flex;
+  justify-content: center;
+
+  color: #fff;
+  border-radius: 5px;
+  margin: 0 10px 10px 10px;
+  max-width: 22rem;
+  height: 12rem;
+  background-color: #333;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+.liked-songs-card:hover {
+  background-color: #555;
+  cursor: pointer;
+}
+
+.liked-songs-card-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.liked-songs-title {
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 818px) {
+  .liked-songs-card-content {
+    width: 28rem;
+  }
+}
+
+@media (max-width: 361px) {
+  .liked-songs-card-content {
+    width: 20rem;
+  }
+}

@@ -1,0 +1,6 @@
+.no-playlist-message {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  font-size: 2rem;
+}
