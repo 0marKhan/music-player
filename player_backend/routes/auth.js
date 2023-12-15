@@ -57,6 +57,14 @@ router.post("login", async (req, res) => {
   if (!isPasswordValid) {
     return res.status(403).json({ err: "Invalid credentials" });
   }
+
+  // if the credentials are valid
+  const token = await getToken(user.email, user);
+  // returning result to the user
+  const userToReturn = { ...user.toJSON(), token };
+  // for deleting the hash of the password, for security
+  delete userToReturn.password;
+  return res.status(200).json(userToReturn);
 });
 
 module.exports = router;

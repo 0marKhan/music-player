@@ -13,7 +13,7 @@ const User = new mongoose.Schema({
 
   likedSongs: {
     type: String,
-    default: "", // means start as empty
+    default: "", // start as empty
   },
 });
 
