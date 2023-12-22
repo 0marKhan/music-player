@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import HomeIcon from "@mui/icons-material/Home";
 import AddIcon from "@mui/icons-material/Add";
@@ -17,6 +18,12 @@ const SideNav = ({ onNewPlaylistClick }) => {
         <AddIcon style={{ fontSize: "1rem", fontWeight: "bolder" }} />
         <span className="nav-content">New Playlist</span>
       </li>
+      <Link to="/add-song">
+        <li className="nav-item">
+          <AddIcon style={{ fontSize: "1rem", fontWeight: "bolder" }} />
+          <span className="nav-content">Add Song</span>
+        </li>
+      </Link>
       <li className="nav-item">
         <FavoriteIcon style={{ fontSize: "1rem" }} />
         <span className="nav-content">Liked Songs</span>

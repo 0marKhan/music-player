@@ -1,0 +1,33 @@
+.add-song-container {
+  display: flex;
+  justify-content: center;
+}
+
+.add-song-textbox {
+  margin-top: 5rem;
+}
+
+.submit-button {
+  margin-top: 1.5rem;
+}
+
+.add-song-text {
+  width: 25rem;
+  color: #fff;
+  text-align: center;
+  font-size: small;
+}
+
+.copyable-link {
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+@media (max-width: 415px) {
+  .add-song-text {
+    width: 20rem;
+  }
+}

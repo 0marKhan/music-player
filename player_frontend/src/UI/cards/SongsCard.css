@@ -1,0 +1,40 @@
+.songs-card {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  border-radius: 5px;
+  margin: 10px 10px 10px 10px;
+  max-width: 22rem;
+  height: 5rem;
+  background-color: #333;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+.songs-card:hover {
+  background-color: #555;
+  cursor: pointer;
+}
+
+.songs-card-content {
+  padding-right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.songs-title {
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 818px) {
+  .songs-card-content {
+    width: 28rem;
+  }
+}
+
+@media (max-width: 361px) {
+  .songs-card-content {
+    width: 20rem;
+  }
+}

@@ -5,6 +5,7 @@ const PurpleButton = styled(Button)({
   borderColor: "#e30085",
   color: "#fff",
   backgroundColor: "#e30085",
+  width: "25rem", // Default width
 
   "&:hover": {
     backgroundColor: "#c80078",
@@ -15,6 +16,10 @@ const PurpleButton = styled(Button)({
     backgroundColor: "#c80078",
     borderColor: "#e30085",
     boxShadow: "none",
+  },
+
+  "@media (max-width: 415px)": {
+    width: "20rem",
   },
 });
 

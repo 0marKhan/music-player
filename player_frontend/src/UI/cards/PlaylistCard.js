@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const PlaylistCard = ({ image, title, playlistId }) => {
   return (
-    <Link to={`/playlist-home/${playlistId}`}>
+    <Link to={`/playlist/${playlistId}`}>
       <div className="card">
         <div className="image-container">
           <img src={image} alt={title} />

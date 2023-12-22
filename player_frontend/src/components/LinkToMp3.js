@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import FilledTextInput from "../UI/common/FilledTextInput";
+import LinkToMp3InputBox from "../UI/common/LinkToMp3InputBox";
 import PurpleButton from "../UI/common/PurpleButton";
 import axios from "axios";
 import { youtube_parser } from "../utils";
@@ -28,18 +28,20 @@ const LinkToMp3 = () => {
       .then((res) => setUrlResult(res.data))
       .catch((err) => console.log(err));
 
+    console.log(urlResult);
+
     inputUrlRef.current.value = "";
   };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="filled-input-form">
-          <FilledTextInput
+        <div className="add-song-textbox">
+          <LinkToMp3InputBox
             ref={inputUrlRef}
-            id="filled-basic"
-            label="Enter a Youtube video link"
-            variant="filled"
+            id="outlined-basic"
+            label="Enter a Youtube Link"
+            variant="outlined"
           />
         </div>
         <div className="submit-button">

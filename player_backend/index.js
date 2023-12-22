@@ -10,9 +10,11 @@ const authRoutes = require("./routes/auth");
 const songRoutes = require("./routes/song");
 const playlistRoutes = require("./routes/playlist");
 
+const cors = require("cors");
 const app = express();
 const port = 3000;
 
+app.use(cors()); //allowing the backend to work with the frontend
 // converts arriving bodies of data into json for expres
 app.use(express.json());
 

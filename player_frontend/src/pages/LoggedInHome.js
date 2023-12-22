@@ -20,6 +20,8 @@ const LoggedInHome = () => {
   const [playlistId, setPlaylistId] = useState(1);
   const [playlists, setPlaylists] = useState([
     { id: 1, image: PlaceholderPlaylistImage, title: "Chad Squirtle" },
+    // { id: 2, image: PlaceholderPlalistImage2, title: "Hooodie shoodie" },
+    // { id: 3, image: Froggy, title: "Froggumus Maximus" },
   ]);
 
   const addNewPlaylist = () => {
@@ -47,12 +49,12 @@ const LoggedInHome = () => {
         <div className="cards-side">
           <div className="playlist-container">
             <div className="playlists">
+              <SongsCard />
               <PlaylistList
                 addNewPlaylist={addNewPlaylist}
                 playlistCount={playlistId}
                 playlists={playlists}
               />
-              <SongsCard />
             </div>
           </div>
           <div>
