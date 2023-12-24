@@ -1,7 +1,9 @@
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import FilledTextInput from "../common/FilledTextInput";
+import { Link } from "react-router-dom";
 import "./TopSearchCard.css";
+
 import froggy from "../../assets/images/froggy.jpg";
 import AddIcon from "@mui/icons-material/Add";
 
@@ -9,8 +11,11 @@ const TopSearchCard = ({ onNewPlaylistClick }) => {
   return (
     <>
       <div className="add-playlist-mobile" onClick={onNewPlaylistClick}>
-        <AddIcon style={{ color: "#999", fontSize: "2.5rem" }} />
+        Add Playlist
       </div>
+      <Link to="/add-song">
+        <div className="add-song-mobile">Add Song</div>
+      </Link>
       <div className="search-items">
         <div className="searchbox">
           <SearchIcon

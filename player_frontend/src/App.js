@@ -17,7 +17,7 @@ const NotFound = () => {
 
 function App() {
   const [cookie, setCookie] = useCookies(["token"]);
-  console.log(cookie.token);
+
   return (
     <>
       {cookie.token ? (

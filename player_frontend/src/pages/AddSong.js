@@ -1,53 +1,93 @@
 import React, { useState } from "react";
 
-import LinkToMp3 from "../components/LinkToMp3";
-
 import "./AddSong.css";
-
-const copyToClipboard = (text) => {
-  navigator.clipboard.writeText(text);
-};
+import { Link } from "react-router-dom";
+import TextInput from "../UI/common/TextInput";
+import { Button } from "@mui/material";
+import CloudinaryUpload from "../components/CloudinaryUpload";
+import { makeAuthenticatedPOSTRequest } from "../utils/serverHelper";
 
 const AddSong = () => {
-  const youtubeLink = "https://youtu.be/oyQ1i-czPcE?si=wXXHBCOu4AXvTdtm"; // Example link
-  const [copied, setCopied] = useState(false);
+  const [name, setName] = useState("");
+  const [thumbnail, setThumbnail] = useState("");
+  const [playlistUrl, setPlaylistUrl] = useState("");
+  const [uploadedSongFileName, setUploadedSongFileName] = useState();
 
-  const handleCopyClick = () => {
-    copyToClipboard(youtubeLink);
-    setCopied(true);
-    setTimeout(() => {
-      setCopied(false);
-    }, 5000);
+  const submitSong = async () => {
+    // console.log(name);
+    // console.log(thumbnail);
+    // console.log(playlistUrl);
+    const data = { name, thumbnail, track: playlistUrl };
+    const response = await makeAuthenticatedPOSTRequest("/song/create", data);
+    console.log(response);
+  };
+
+  const setNameHandler = (event) => {
+    setName(event.target.value);
+  };
+
+  const setThumbnailHandler = (event) => {
+    setThumbnail(event.target.value);
+  };
+
+  const setPlaylistUrlHandler = (event) => {
+    setPlaylistUrl(event.target.value);
   };
 
   return (
-    <div className="add-song-container">
-      <div>
-        <div>
-          <LinkToMp3 />
-        </div>
-
-        <div className="add-song-description">
-          <p className="add-song-text">
-            Enter a valid YouTube link, like the example link below for a video
-            to convert it into audio and add it to your songs list.
-          </p>
-          <p
-            className="add-song-text"
-            onClick={handleCopyClick}
-            style={{ cursor: "pointer" }}
-          >
-            <span className="copyable-link">
-              {copied ? "Copied!" : youtubeLink}
-            </span>
-          </p>
-          <p className="add-song-text">
-            Only YouTube links are supported at the moment. Ensure the link is
-            accessible and contains a playable video.
-          </p>
-        </div>
+    <>
+      <div className="addsong-header">
+        <Link to="/home" className="home-link">
+          <h3>Home</h3>
+        </Link>
       </div>
-    </div>
+      <div className="add-song-container">
+        <h3 className="addsong-title">Upload your music</h3>
+        <div className="addsong-boxes">
+          <TextInput
+            id="outlined-basic"
+            label="Name"
+            variant="outlined"
+            style={{ margin: "1.5rem 0rem 0 0rem" }}
+            value={name}
+            onChange={setNameHandler}
+          />
+          <div className="thumbnail-box">
+            <TextInput
+              id="outlined-basic"
+              label="Thumbnail"
+              variant="outlined"
+              style={{ margin: "1.5rem 0rem 0 0rem" }}
+              value={thumbnail}
+              onChange={setThumbnailHandler}
+            />
+          </div>
+        </div>
+        <div>
+          {uploadedSongFileName ? (
+            <div className="uploaded-song-name">
+              {uploadedSongFileName.length <= 35
+                ? uploadedSongFileName
+                : `${uploadedSongFileName.substring(0, 32)}...`}
+            </div>
+          ) : (
+            <CloudinaryUpload
+              setUrl={setPlaylistUrl}
+              setName={setUploadedSongFileName}
+            />
+          )}
+        </div>
+        {uploadedSongFileName ? (
+          <div>
+            <button className="submit-song-button" onClick={submitSong}>
+              Submit Song
+            </button>
+          </div>
+        ) : (
+          <div></div>
+        )}
+      </div>
+    </>
   );
 };
 
