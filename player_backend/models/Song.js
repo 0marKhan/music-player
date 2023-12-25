@@ -14,6 +14,10 @@ const Song = new mongoose.Schema({
     type: String,
     required: true,
   },
+  artist: {
+    type: mongoose.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 // create a model

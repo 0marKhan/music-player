@@ -63,3 +63,20 @@
 .upload-song-button:hover {
   background-color: #f36ca7;
 }
+
+@media (max-width: 980px) {
+  .addsong-boxes {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .thumbnail-box {
+    margin: 0;
+  }
+}
+
+@media (max-width: 540px) {
+  .add-song-container {
+    margin-left: 2rem;
+  }
+}

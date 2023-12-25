@@ -1,0 +1,18 @@
+.songs-title-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.songs-page-title {
+  color: #fff;
+}
+
+.songs-list {
+  margin-top: 4rem;
+}
+
+.user-song-details {
+  color: #999;
+}

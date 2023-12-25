@@ -8,22 +8,17 @@ router.post(
   "/create",
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
-    try {
-      const { name, track } = req.body;
-
-      if (!name || !track) {
-        return res
-          .status(400)
-          .json({ error: "Insufficient details to create song" });
-      }
-
-      const songDetails = { name, track };
-      const createdSong = await Song.create(songDetails);
-
-      return res.status(201).json(createdSong);
-    } catch (error) {
-      return res.status(500).json({ error: "Failed to create song" });
+    // req.user gets the user because of passport.authenticate
+    const { name, thumbnail, track } = req.body;
+    if (!name || !thumbnail || !track) {
+      return res
+        .status(301)
+        .json({ err: "Insufficient details to create song." });
     }
+    const artist = req.user._id;
+    const songDetails = { name, thumbnail, track, artist };
+    const createdSong = await Song.create(songDetails);
+    return res.status(200).json(createdSong);
   }
 );
 
@@ -34,6 +29,27 @@ router.get(
   async (req, res) => {
     const { songName } = req.params;
     const songs = await Song.find({ name: songName });
+    return res.status(200).json({ data: songs });
+  }
+);
+
+// Get route to get all songs any artist has published
+// I will send the artist id and I want to see all songs that artist has published.
+router.get(
+  "/get/artist/:artistId",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const { artistId } = req.params;
+    // We can check if the artist does not exist
+    const artist = await User.findOne({ _id: artistId });
+    // ![] = false
+    // !null = true
+    // !undefined = true
+    if (!artist) {
+      return res.status(301).json({ err: "Artist does not exist" });
+    }
+
+    const songs = await Song.find({ artist: artistId });
     return res.status(200).json({ data: songs });
   }
 );

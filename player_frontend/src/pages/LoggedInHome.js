@@ -75,10 +75,8 @@ const LoggedInHome = () => {
         <div className="instructions">
           <h2 className="instructions-heading">How it works</h2>
           <p className="instruction-text">
-            Create a playlist and add songs to it by copying the youtube link
-            for the song and pasting it in the add songs sections. Keeping in
-            mind the Youtube to MP3 API only lets you convert 50 youtube links
-            to MP3 files per day
+            Add media files, in the "Add Song" section, which you can then add
+            to your playlist or liked songs
           </p>
         </div>
         <div className="bottom-nav">

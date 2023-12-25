@@ -14,13 +14,38 @@ export const makeUnauthenticatedPOSTRequest = async (route, body) => {
 
 export const makeAuthenticatedPOSTRequest = async (route, body) => {
   const token = getToken();
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  };
+
+  try {
+    const response = await fetch(backendUrl + route, {
+      method: "POST",
+      headers,
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Request failed with status: ${response.status}`);
+    }
+
+    const formattedResponse = await response.json();
+    return formattedResponse;
+  } catch (error) {
+    console.error("Error making POST request:", error);
+    return { error: "Failed to make the request" };
+  }
+};
+
+export const makeAuthenticatedGETRequest = async (route) => {
+  const token = getToken();
   const response = await fetch(backendUrl + route, {
-    method: "POST",
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(body),
   });
   const formattedResponse = await response.json();
   return formattedResponse;
