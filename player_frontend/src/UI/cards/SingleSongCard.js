@@ -1,24 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 import "./SingleSongCard.css";
+import songContext from "../../contexts/songContext";
 
 const SingleSongCard = ({ info, playSound }) => {
+  const { currentSong, setCurrentSong } = useContext(songContext);
+  // checking if clicking the song changes the song to current song
+  // console.log(currentSong);
+
   const backgroundImage = `url('${info.thumbnail}')`;
 
   return (
-    <div className="song-card-container">
+    // setting the current song to the song clicked
+    <div className="song-card-container" onClick={() => setCurrentSong(info)}>
       <div className="song-card-main">
         {/* for display the play arrow when highlighted */}
-        <div
-          className="play-song-button"
-          onClick={() => {
-            playSound(info.track);
-          }}
-        >
+        <div className="play-song-button">
           <PlayArrowIcon />
         </div>
         {/* for displaying the image with inline background style */}

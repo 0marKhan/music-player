@@ -19,12 +19,25 @@ const NotFound = () => {
 
 function App() {
   const [currentSong, setCurrentSong] = useState(null);
+  // sound played is initially null because we arent playing any song
+  const [soundPlayed, setSoundPlayed] = useState(null);
+  // initially tru because we arent playing any song and its paused
+  const [isPaused, setIsPaused] = useState(true);
   const [cookie, setCookie] = useCookies(["token"]);
 
   return (
     <>
       {cookie.token ? (
-        <songContext.Provider value={{ currentSong, setCurrentSong }}>
+        <songContext.Provider
+          value={{
+            currentSong,
+            setCurrentSong,
+            soundPlayed,
+            setSoundPlayed,
+            isPaused,
+            setIsPaused,
+          }}
+        >
           <Routes>
             {/* for context */}
 

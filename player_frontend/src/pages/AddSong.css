@@ -1,3 +1,9 @@
+.add-song-outer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .home-link {
   display: inline-block;
   margin: 1rem 0 0 2.5rem;
@@ -19,7 +25,7 @@
 
 .addsong-header {
   display: flex;
-  justify-content: flex-end;
+
   margin-right: 2rem;
 }
 

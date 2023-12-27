@@ -4,6 +4,7 @@ import { Howl, Howler } from "howler";
 
 import "./Home.css";
 
+import BottomPlayerContainer from "../containers/BottomPlayerContainer";
 import LikedSongsPlaylist from "../UI/cards/LikedSongsPlaylist";
 import SideNav from "../components/SideNav";
 import TopSearchCard from "../UI/cards/TopSearchCard";
@@ -23,11 +24,7 @@ const LoggedInHome = () => {
   const [playlistId, setPlaylistId] = useState(1);
   const [playlists, setPlaylists] = useState([
     { id: 1, image: PlaceholderPlaylistImage, title: "Chad Squirtle" },
-    // { id: 2, image: PlaceholderPlalistImage2, title: "Hooodie shoodie" },
-    // { id: 3, image: Froggy, title: "Froggumus Maximus" },
   ]);
-  const [soundPlayed, setSoundPlayed] = useState(null);
-  const [isPaused, setIsPaused] = useState(true);
 
   const addNewPlaylist = () => {
     const newId = playlistId + 1;
@@ -42,36 +39,8 @@ const LoggedInHome = () => {
     setPlaylists([...playlists, newPlaylist]);
   };
 
-  const playSound = (songSrc) => {
-    if (soundPlayed) {
-      soundPlayed.stop();
-    }
-    let sound = new Howl({
-      src: [songSrc],
-      html5: true,
-    });
-    setSoundPlayed(sound);
-    sound.play();
-  };
-
-  const pauseSound = () => {
-    soundPlayed.pause();
-  };
-
-  const togglePlayPause = () => {
-    if (isPaused) {
-      playSound(
-        "https://res.cloudinary.com/decgdudjl/video/upload/v1703629371/cbrvhbjzcsywfpnml5x7.mp3"
-      );
-      setIsPaused(false);
-    } else {
-      pauseSound();
-      setIsPaused(true);
-    }
-  };
-
   return (
-    <div className="main-container">
+    <BottomPlayerContainer>
       <div className="upper-page-portion">
         <div className="search-playlist">
           <TopSearchCard onNewPlaylistClick={addNewPlaylist} />
@@ -118,48 +87,7 @@ const LoggedInHome = () => {
           </div>
         </div>
       </div>
-      {/* this is for playing the current song */}
-      <div className="lower-page-portion">
-        <div className="first-portion-bottom">
-          <img
-            className="lower-portion-img"
-            src="https://f4.bcbits.com/img/a3756253541_65"
-            alt="current song thumbnail"
-          />
-          <div className="lower-portion-details">
-            <div className="song-name-bottom">Death Card Cabin</div>
-            <div className="artist-name-bottom">Omar Khan</div>
-          </div>
-        </div>
-        <div className="second-portion-bottom">
-          <div className="bottom-controls">
-            <div className="prev-btn">
-              <SkipPreviousIcon style={{ fontSize: "2rem" }} />
-            </div>
-            <div className="play-btn" onClick={togglePlayPause}>
-              {isPaused ? (
-                <PlayCircleIcon
-                  style={{
-                    fontSize: "2.2rem",
-                  }}
-                />
-              ) : (
-                <PauseCircleIcon
-                  style={{
-                    fontSize: "2.2rem",
-                  }}
-                />
-              )}
-            </div>
-            <div className="next-btn">
-              <SkipNextIcon style={{ fontSize: "2rem" }} />
-            </div>
-          </div>
-          <div>Progress Bar</div>
-        </div>
-        <div className="third-portion-bottom"></div>
-      </div>
-    </div>
+    </BottomPlayerContainer>
   );
 };
 
