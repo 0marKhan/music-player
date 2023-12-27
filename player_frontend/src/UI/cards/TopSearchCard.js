@@ -5,14 +5,11 @@ import { Link } from "react-router-dom";
 import "./TopSearchCard.css";
 
 import froggy from "../../assets/images/froggy.jpg";
-import AddIcon from "@mui/icons-material/Add";
 
-const TopSearchCard = ({ onNewPlaylistClick }) => {
+const TopSearchCard = () => {
   return (
     <>
-      <div className="add-playlist-mobile" onClick={onNewPlaylistClick}>
-        Add Playlist
-      </div>
+      <div className="add-playlist-mobile">Add Playlist</div>
       <Link to="/add-song">
         <div className="add-song-mobile">Add Song</div>
       </Link>

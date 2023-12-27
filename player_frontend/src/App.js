@@ -12,6 +12,7 @@ import songContext from "./contexts/songContext";
 
 import "./App.css";
 import { useState } from "react";
+import SearchSong from "./pages/SearchSong";
 
 const NotFound = () => {
   return <h1>404 - Page Not Found</h1>;
@@ -45,7 +46,7 @@ function App() {
             <Route path="/playlist/:playlistId" element={<PlaylistHome />} />
             <Route path="/songs" element={<Songs />} />
             <Route path="/add-song" element={<AddSong />} />
-            <Route path="/home" element={<LoggedInHome />} />
+            <Route path="/search-songs" element={<SearchSong />} />
             <Route path="*" element={<Navigate to="/home" />} />
           </Routes>
         </songContext.Provider>

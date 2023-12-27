@@ -25,7 +25,7 @@ const CloudinaryUpload = ({ setUrl, setName }) => {
 
   return (
     <button className="upload-song-button" onClick={uploadImageWidget}>
-      Select Track
+      SELECT TRACK
     </button>
   );
 };

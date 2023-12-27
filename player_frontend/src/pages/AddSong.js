@@ -78,7 +78,7 @@ const AddSong = () => {
           {uploadedSongFileName ? (
             <div>
               <button className="submit-song-button" onClick={submitSong}>
-                Submit Song
+                SUBMIT SONG
               </button>
             </div>
           ) : (

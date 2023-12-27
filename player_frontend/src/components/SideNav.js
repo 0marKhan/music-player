@@ -4,16 +4,19 @@ import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import AddIcon from "@mui/icons-material/Add";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import SearchIcon from "@mui/icons-material/Search";
 
 import "./SideNav.css";
 
 const SideNav = ({ onNewPlaylistClick }) => {
   return (
     <ul className="left-nav">
-      <li className="nav-item">
-        <HomeIcon style={{ fontSize: "1rem" }} />
-        <span className="nav-content">Home</span>
-      </li>
+      <Link to="/search-songs">
+        <li className="nav-item">
+          <SearchIcon style={{ fontSize: "1rem" }} />
+          <span className="nav-content">Search Songs</span>
+        </li>
+      </Link>
       <li className="nav-item" onClick={onNewPlaylistClick}>
         <AddIcon style={{ fontSize: "1rem", fontWeight: "bolder" }} />
         <span className="nav-content">New Playlist</span>

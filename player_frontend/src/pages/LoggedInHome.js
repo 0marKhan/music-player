@@ -8,56 +8,28 @@ import BottomPlayerContainer from "../containers/BottomPlayerContainer";
 import LikedSongsPlaylist from "../UI/cards/LikedSongsPlaylist";
 import SideNav from "../components/SideNav";
 import TopSearchCard from "../UI/cards/TopSearchCard";
-import PlaylistPlaceholderImage from "../assets/images/music-placeholder.jpg";
-import PlaceholderPlaylistImage from "../assets/images/placeholder-playlist-img.jpg";
+
 import animations from "../assets/lottefiles/animation.json";
 import SimpleBottomNavigation from "../components/SimpleBottomNavigation";
 import PlaylistList from "../components/PlaylistList";
 import SongsCard from "../UI/cards/SongsCard";
 
-import PlayCircleIcon from "@mui/icons-material/PlayCircle";
-import PauseCircleIcon from "@mui/icons-material/PauseCircle";
-import SkipNextIcon from "@mui/icons-material/SkipNext";
-import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
-
 const LoggedInHome = () => {
-  const [playlistId, setPlaylistId] = useState(1);
-  const [playlists, setPlaylists] = useState([
-    { id: 1, image: PlaceholderPlaylistImage, title: "Chad Squirtle" },
-  ]);
-
-  const addNewPlaylist = () => {
-    const newId = playlistId + 1;
-    setPlaylistId(newId);
-
-    const newPlaylist = {
-      id: newId,
-      image: PlaylistPlaceholderImage,
-      title: `Playlist ${newId}`,
-    };
-
-    setPlaylists([...playlists, newPlaylist]);
-  };
-
   return (
     <BottomPlayerContainer>
       <div className="upper-page-portion">
         <div className="search-playlist">
-          <TopSearchCard onNewPlaylistClick={addNewPlaylist} />
+          <TopSearchCard />
         </div>
         <div className="nav-card-container">
           <div className="nav-side">
-            <SideNav onNewPlaylistClick={addNewPlaylist} />
+            <SideNav />
           </div>
           <div className="cards-side">
             <div className="playlist-container">
               <div className="playlists">
                 <SongsCard />
-                <PlaylistList
-                  addNewPlaylist={addNewPlaylist}
-                  playlistCount={playlistId}
-                  playlists={playlists}
-                />
+                <PlaylistList />
               </div>
             </div>
             <div>
@@ -82,8 +54,9 @@ const LoggedInHome = () => {
               to your playlist or liked songs
             </p>
           </div>
+          {/* for phone view */}
           <div className="bottom-nav">
-            <SimpleBottomNavigation onNewPlaylistClick={addNewPlaylist} />
+            <SimpleBottomNavigation />
           </div>
         </div>
       </div>

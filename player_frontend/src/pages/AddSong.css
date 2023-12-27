@@ -63,6 +63,8 @@
   background-color: #e30085;
   color: #fff;
   font-weight: 500;
+  transition: 0.3s;
+  cursor: pointer;
 }
 
 .submit-song-button:hover,

@@ -8,6 +8,7 @@ import BottomPlayerContainer from "../containers/BottomPlayerContainer";
 import SingleSongCard from "../UI/cards/SingleSongCard";
 import "./Songs.css";
 import { Link } from "react-router-dom";
+import TextInput from "../UI/common/TextInput";
 
 const Songs = () => {
   const [songData, setSongData] = useState([]);
@@ -37,6 +38,7 @@ const Songs = () => {
             <h3>Home</h3>
           </Link>
         </div>
+
         <div className="songs-container">
           <div className="songs-title-section">
             <h1 className="songs-page-title">My Songs</h1>
@@ -44,6 +46,7 @@ const Songs = () => {
             <div className="user-song-details">453 Songs, 62 hrs 50 mins</div>
             <Divider variant="middle" style={dividerStyle} />
           </div>
+
           <div className="songs-list">
             {songData.map((item) => (
               <SingleSongCard info={item} playSound={() => {}} />
