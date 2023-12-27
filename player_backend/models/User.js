@@ -6,6 +6,11 @@ const User = new mongoose.Schema({
     type: String,
     required: true,
   },
+  password: {
+    type: String,
+    required: true,
+    private: true,
+  },
   username: {
     type: String,
     required: true,
@@ -13,7 +18,7 @@ const User = new mongoose.Schema({
 
   likedSongs: {
     type: String,
-    default: "", // means start as empty
+    default: "", // start as empty
   },
 });
 

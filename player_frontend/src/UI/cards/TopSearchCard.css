@@ -20,6 +20,10 @@
   display: none;
 }
 
+.add-song-mobile {
+  display: none;
+}
+
 @media screen and (max-width: 430px) {
   .search-items {
     display: none;
@@ -30,6 +34,14 @@
 
   .add-playlist-mobile {
     display: block;
+    color: #fff;
+    padding: 0.5rem 0 0 1rem;
+  }
+
+  .add-song-mobile {
+    display: block;
+    color: #fff;
+    padding-top: 0.5rem;
   }
 }
 
@@ -40,6 +52,14 @@
 
   .add-playlist-mobile {
     display: block;
+    color: #fff;
+    padding: 0.5rem 0 0 1rem;
+  }
+
+  .add-song-mobile {
+    display: block;
+    color: #fff;
+    padding-top: 0.5rem;
   }
 }
 

@@ -7,10 +7,14 @@ const passport = require("passport");
 
 const User = require("./models/User");
 const authRoutes = require("./routes/auth");
+const songRoutes = require("./routes/song");
+const playlistRoutes = require("./routes/playlist");
 
+const cors = require("cors");
 const app = express();
 const port = 3000;
 
+app.use(cors()); //allowing the backend to work with the frontend
 // converts arriving bodies of data into json for expres
 app.use(express.json());
 
@@ -36,23 +40,26 @@ let opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = "secretKey";
 passport.use(
-  new JwtStrategy(opts, function (jwt_payload, done) {
-    User.findOne({ id: jwt_payload.sub }, function (err, user) {
-      if (err) {
-        return done(err, false);
-      }
+  new JwtStrategy(opts, async (jwt_payload, done) => {
+    try {
+      const user = await User.findOne({ _id: jwt_payload.identifier });
+
       if (user) {
         return done(null, user);
       } else {
         return done(null, false);
         // or you could create a new account
       }
-    });
+    } catch (error) {
+      return done(error, false);
+    }
   })
 );
 
 // routes
 app.use("/auth", authRoutes);
+app.use("/song", songRoutes);
+app.use("/playlist", playlistRoutes);
 
 app.listen(port, () => {
   console.log("App is running on port: " + port);

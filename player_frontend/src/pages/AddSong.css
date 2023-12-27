@@ -1,0 +1,90 @@
+.add-song-outer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.home-link {
+  display: inline-block;
+  margin: 1rem 0 0 2.5rem;
+  text-decoration: none;
+}
+
+.home-link h3 {
+  display: inline;
+  font-size: 1rem;
+}
+
+.home-link:hover {
+  color: #e30085;
+}
+
+.add-song-container {
+  margin: 5rem 5rem 0 5rem;
+}
+
+.addsong-header {
+  display: flex;
+
+  margin-right: 2rem;
+}
+
+.addsong-boxes {
+  display: flex;
+}
+
+.thumbnail-box {
+  margin-left: 1rem;
+}
+
+.addsong-title {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.uploaded-song-name {
+  display: inline-block;
+  background-color: #999;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+  max-width: calc(35ch + 2rem);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.submit-song-button,
+.upload-song-button {
+  margin-top: 2rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: #e30085;
+  color: #fff;
+  font-weight: 500;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.submit-song-button:hover,
+.upload-song-button:hover {
+  background-color: #f36ca7;
+}
+
+@media (max-width: 980px) {
+  .addsong-boxes {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .thumbnail-box {
+    margin: 0;
+  }
+}
+
+@media (max-width: 540px) {
+  .add-song-container {
+    margin-left: 2rem;
+  }
+}

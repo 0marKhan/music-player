@@ -4,11 +4,13 @@ export function youtube_parser(url) {
   }
 
   const regExp =
-    /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/(watch\?v=)?([^&?]+)/;
+    /^(https?:\/\/)?(www\.)?(youtube\.com\/(watch\?v=|embed\/)|youtu\.be\/)([^&?]+)/;
   const match = url.match(regExp);
 
-  if (match && match[5].length === 11) {
-    return match[5];
+  if (match && match[5]) {
+    // Splitting by & to remove extra parameters and returning the video ID
+    const videoId = match[5].split("&")[0];
+    return videoId;
   } else {
     return false;
   }

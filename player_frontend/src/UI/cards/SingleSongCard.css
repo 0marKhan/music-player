@@ -1,0 +1,96 @@
+.song-card-container {
+  margin: 0rem 6rem 0 6rem;
+  padding: 0.5rem;
+}
+
+.song-card-container:hover {
+  background-color: rgba(172, 172, 172, 0.1);
+  border-radius: 0.2rem;
+}
+
+.song-card-main {
+  display: flex;
+}
+
+.img-portion {
+  width: 3rem;
+  height: 3rem;
+
+  background-size: cover;
+  background-position: center;
+}
+
+.left-side-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 1rem;
+  width: 80%;
+}
+
+.right-side-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  color: #676767;
+}
+
+.liked-song-icon {
+  color: #676767;
+  padding: 0.2rem 2rem 0 0;
+}
+
+.duration {
+  padding-right: 2rem;
+}
+
+.play-song-button {
+  padding-top: 0.7rem;
+  color: #fff;
+  padding-right: 1rem;
+  visibility: hidden;
+}
+
+.song-card-container:hover .play-song-button {
+  visibility: visible;
+  cursor: pointer;
+}
+
+.options-dots {
+  color: #fff;
+  visibility: hidden;
+}
+
+.song-card-container:hover .options-dots {
+  visibility: visible;
+  cursor: pointer;
+}
+
+.song-details {
+  display: flex;
+  width: 100%;
+}
+
+.song-name {
+  color: #fff;
+}
+
+.artist-name {
+  color: #676767;
+  padding-top: 0.35rem;
+}
+
+@media (max-width: 640px) {
+  .song-card-container {
+    margin: 0rem 1.5rem 0 1.5rem;
+  }
+
+  .left-side-details {
+    width: 60%;
+  }
+
+  .right-side-details {
+    width: 40%;
+  }
+}

@@ -23,8 +23,8 @@ router.post("/register", async (req, res) => {
   // if email with this user does not exist
   // creating new user in the db
   // not storing password in plaintext, but as a hash
-  const hashedPassword = bcrypt.hash(password, 10);
-  const newUserData = { email, hashedPassword, username };
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const newUserData = { email, password: hashedPassword, username };
 
   // creating new user for the database
   const newUser = await User.create(newUserData);
@@ -40,7 +40,7 @@ router.post("/register", async (req, res) => {
 });
 
 // for logging in
-router.post("login", async (req, res) => {
+router.post("/login", async (req, res) => {
   // get email and password set by user
   const { email, password } = req.body;
 
@@ -57,6 +57,14 @@ router.post("login", async (req, res) => {
   if (!isPasswordValid) {
     return res.status(403).json({ err: "Invalid credentials" });
   }
+
+  // if the credentials are valid
+  const token = await getToken(user.email, user);
+  // returning result to the user
+  const userToReturn = { ...user.toJSON(), token };
+  // for deleting the hash of the password, for security
+  delete userToReturn.password;
+  return res.status(200).json(userToReturn);
 });
 
 module.exports = router;

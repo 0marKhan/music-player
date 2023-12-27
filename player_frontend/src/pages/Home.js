@@ -3,27 +3,23 @@ import Lottie from "lottie-react";
 
 import "./Home.css";
 
-import PlaylistCard from "../UI/cards/PlaylistCard";
 import LikedSongsPlaylist from "../UI/cards/LikedSongsPlaylist";
 import SideNav from "../components/SideNav";
 import TopSearchCard from "../UI/cards/TopSearchCard";
 
 import PlaylistPlaceholderImage from "../assets/images/music-placeholder.jpg";
 import PlaceholderPlaylistImage from "../assets/images/placeholder-playlist-img.jpg";
-import PlaceholderPlalistImage2 from "../assets/images/placeholder2.jpg";
-import Froggy from "../assets/images/froggy.jpg";
 
 import animations from "../assets/lottefiles/animation.json";
 
 import SimpleBottomNavigation from "../components/SimpleBottomNavigation";
 import PlaylistList from "../components/PlaylistList";
+import SongsCard from "../UI/cards/SongsCard";
 
-const Home = () => {
+const LoggedInHome = () => {
   const [playlistId, setPlaylistId] = useState(1);
   const [playlists, setPlaylists] = useState([
     { id: 1, image: PlaceholderPlaylistImage, title: "Chad Squirtle" },
-    // { id: 2, image: PlaceholderPlalistImage2, title: "Hooodie shoodie" },
-    // { id: 3, image: Froggy, title: "Froggumus Maximus" },
   ]);
 
   const addNewPlaylist = () => {
@@ -56,6 +52,7 @@ const Home = () => {
                 playlistCount={playlistId}
                 playlists={playlists}
               />
+              <SongsCard />
             </div>
           </div>
           <div>
@@ -76,10 +73,8 @@ const Home = () => {
         <div className="instructions">
           <h2 className="instructions-heading">How it works</h2>
           <p className="instruction-text">
-            Create a playlist and add songs to it by copying the youtube link
-            for the song and pasting it in the add songs sections. Keeping in
-            mind the Youtube to MP3 API only lets you convert 50 youtube links
-            to MP3 files per day
+            Add media files, in the "Add Song" section, which you can then add
+            to your playlist or liked songs
           </p>
         </div>
         <div className="bottom-nav">
@@ -93,4 +88,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default LoggedInHome;
