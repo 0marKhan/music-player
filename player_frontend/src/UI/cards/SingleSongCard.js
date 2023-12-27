@@ -6,22 +6,29 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 import "./SingleSongCard.css";
 
-const SingleSongCard = () => {
+const SingleSongCard = ({ info, playSound }) => {
+  const backgroundImage = `url('${info.thumbnail}')`;
+
   return (
     <div className="song-card-container">
       <div className="song-card-main">
         {/* for display the play arrow when highlighted */}
-        <div className="play-song-button">
+        <div
+          className="play-song-button"
+          onClick={() => {
+            playSound(info.track);
+          }}
+        >
           <PlayArrowIcon />
         </div>
-        {/* for displaying the image */}
-        <div className="img-portion"></div>
+        {/* for displaying the image with inline background style */}
+        <div className="img-portion" style={{ backgroundImage }}></div>
         {/* for all the content like name, artist, duration, liked */}
         <div className="song-details">
           {/* for the name and artist of the song */}
           <div className="left-side-details">
-            <div className="song-name">7th Element</div>
-            <div className="artist-name">Vitas</div>
+            <div className="song-name">{info.name}</div>
+            <div className="artist-name">{info.artist.username}</div>
           </div>
           <div className="right-side-details">
             <div className="liked-song-icon">
