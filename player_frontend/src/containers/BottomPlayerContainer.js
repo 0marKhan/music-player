@@ -8,14 +8,26 @@ import React, {
 import { Howl, Howler } from "howler";
 
 import "../pages/Home.css";
+import AddToPlaylistModal from "../modals/AddToPlaylistModal";
 
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import PauseCircleIcon from "@mui/icons-material/PauseCircle";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import songContext from "../contexts/songContext";
+import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 
 const BottomPlayerContainer = ({ children }) => {
+  const [addToPlaylistModalOpen, setAddToPlaylistModalOpen] = useState(false);
+
+  const openAddToPlaylistModal = () => {
+    setAddToPlaylistModalOpen(true);
+  };
+
+  const closeAddToPlaylistModal = () => {
+    setAddToPlaylistModalOpen(false);
+  };
   // gets the current value of song from context
   const {
     currentSong,
@@ -60,6 +72,11 @@ const BottomPlayerContainer = ({ children }) => {
     let sound = new Howl({
       src: [songSrc],
       html5: true,
+      onload: function () {
+        // Access the duration once the audio file is loaded
+        const duration = sound.duration();
+        console.log("Duration:", duration);
+      },
     });
     setSoundPlayed(sound);
     sound.play();
@@ -86,6 +103,10 @@ const BottomPlayerContainer = ({ children }) => {
 
   return (
     <div className="main-container">
+      {/* modal for adding to a playlist */}
+      {addToPlaylistModalOpen && (
+        <AddToPlaylistModal closeAddToPlaylistModal={closeAddToPlaylistModal} />
+      )}
       {children}
       {/* conditionally render the bottom audio bar if there is a current song*/}
       {currentSong && (
@@ -100,6 +121,11 @@ const BottomPlayerContainer = ({ children }) => {
               <div className="song-name-bottom">{currentSong.name}</div>
               <div className="artist-name-bottom">
                 {currentSong.artist.username}
+              </div>
+            </div>
+            <div className="liked-song-icon-bottom">
+              <div className="liked-container">
+                <FavoriteBorderIcon />
               </div>
             </div>
           </div>
@@ -127,9 +153,13 @@ const BottomPlayerContainer = ({ children }) => {
                 <SkipNextIcon style={{ fontSize: "2rem" }} />
               </div>
             </div>
-            <div>Progress Bar</div>
+            {/* <div>Progress Bar</div> */}
           </div>
-          <div className="third-portion-bottom"></div>
+          <div className="third-portion-bottom">
+            <div className="add-playlist-button">
+              <PlaylistAddIcon onClick={openAddToPlaylistModal} />
+            </div>
+          </div>
         </div>
       )}
     </div>

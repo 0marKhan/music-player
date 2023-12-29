@@ -13,23 +13,50 @@ import animations from "../assets/lottefiles/animation.json";
 import SimpleBottomNavigation from "../components/SimpleBottomNavigation";
 import PlaylistList from "../components/PlaylistList";
 import SongsCard from "../UI/cards/SongsCard";
+import CreatePlaylistModal from "../modals/CreatePlaylistModal";
 
 const LoggedInHome = () => {
+  const [createPlaylistModalOpen, setCreatePlaylistModalOpen] = useState(false);
+
+  const addNewPlaylist = (newPlaylist) => {
+    console.log(newPlaylist);
+  };
+
+  const openCreatePlaylistModal = () => {
+    setCreatePlaylistModalOpen(true);
+  };
+
+  const closeCreatePlaylistModal = () => {
+    setCreatePlaylistModalOpen(false);
+  };
+
   return (
     <BottomPlayerContainer>
+      {/* modal for creating playlist */}
+      {/* only display the modal if the createPlaylistModalOpen is true */}
+      {createPlaylistModalOpen && (
+        <CreatePlaylistModal
+          closeCreatePlaylistModal={closeCreatePlaylistModal}
+          addNewPlaylist={addNewPlaylist}
+        />
+      )}
+
       <div className="upper-page-portion">
         <div className="search-playlist">
           <TopSearchCard />
         </div>
         <div className="nav-card-container">
           <div className="nav-side">
-            <SideNav />
+            <SideNav openCreatePlaylistModal={openCreatePlaylistModal} />
           </div>
           <div className="cards-side">
             <div className="playlist-container">
-              <div className="playlists">
+              <div className="songs-card-container">
                 <SongsCard />
-                <PlaylistList />
+              </div>
+
+              <div className="playlists">
+                <PlaylistList addNewPlaylist={addNewPlaylist} />
               </div>
             </div>
             <div>

@@ -8,7 +8,7 @@ import SearchIcon from "@mui/icons-material/Search";
 
 import "./SideNav.css";
 
-const SideNav = ({ onNewPlaylistClick }) => {
+const SideNav = ({ openCreatePlaylistModal }) => {
   return (
     <ul className="left-nav">
       <Link to="/search-songs">
@@ -17,7 +17,7 @@ const SideNav = ({ onNewPlaylistClick }) => {
           <span className="nav-content">Search Songs</span>
         </li>
       </Link>
-      <li className="nav-item" onClick={onNewPlaylistClick}>
+      <li className="nav-item" onClick={openCreatePlaylistModal}>
         <AddIcon style={{ fontSize: "1rem", fontWeight: "bolder" }} />
         <span className="nav-content">New Playlist</span>
       </li>

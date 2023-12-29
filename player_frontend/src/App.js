@@ -1,10 +1,8 @@
 import { Navigate, Route, RouterProvider, Routes } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
-import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-import PlaylistHome from "./pages/PlaylistHome";
 import LoggedInHome from "./pages/LoggedInHome";
 import Songs from "./pages/Songs";
 import AddSong from "./pages/AddSong";
@@ -43,7 +41,6 @@ function App() {
             {/* for context */}
 
             <Route path="/home" element={<LoggedInHome />} />
-            <Route path="/playlist/:playlistId" element={<PlaylistHome />} />
             <Route path="/songs" element={<Songs />} />
             <Route path="/add-song" element={<AddSong />} />
             <Route path="/search-songs" element={<SearchSong />} />
@@ -52,7 +49,6 @@ function App() {
         </songContext.Provider>
       ) : (
         <Routes>
-          <Route path="/home" element={<Home />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/" element={<Login />} />
           <Route path="*" element={<Navigate to="/" />} />
