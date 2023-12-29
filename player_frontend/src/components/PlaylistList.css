@@ -4,3 +4,39 @@
   color: #fff;
   font-size: 2rem;
 }
+
+.playlists-display {
+  width: 45rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0rem;
+  justify-content: center;
+}
+
+@media (max-width: 818px) {
+  .playlists-display {
+    width: 26rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem auto;
+  }
+}
+
+@media screen and (device-width: 768px) and (device-height: 1024px) and (orientation: portrait) {
+  .playlists-display {
+    width: 45rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0rem;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 415px) {
+  .playlists-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

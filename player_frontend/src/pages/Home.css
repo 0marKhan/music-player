@@ -14,7 +14,8 @@
   position: sticky;
   bottom: 0;
   height: 15%;
-  background-color: #1c1c1c;
+  background-color: #161616;
+  border-top: 1px solid #e30085;
 }
 
 .first-portion-bottom {
@@ -56,6 +57,16 @@
   display: flex;
   justify-content: center;
   width: 25%;
+}
+
+.add-playlist-button {
+  color: #888;
+  padding-top: 1.7rem;
+}
+
+.add-playlist-button:hover {
+  cursor: pointer;
+  color: #fff;
 }
 
 .lower-portion-details {
@@ -104,7 +115,7 @@
 }
 
 .search-playlist {
-  margin: 1rem 2rem 0 2rem;
+  margin: 1rem 1rem 0 2rem;
   border-radius: 5px;
   padding: 1rem;
   background-color: #242323;
@@ -127,13 +138,14 @@
 
 .playlist-container {
   margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .liked-songs-container {
   margin-top: 0.7rem;
 }
 
-.playlists,
 .liked-songs {
   width: 45rem;
   display: grid;
@@ -159,6 +171,18 @@
   font-size: small;
   line-height: 1.5rem;
   margin: 0 1.5rem 0 1rem;
+}
+
+.liked-song-icon-bottom {
+  z-index: 10;
+  color: #676767;
+  padding: 1.5rem 0rem 0 5%;
+}
+
+.liked-container:hover {
+  color: #fff;
+
+  cursor: pointer;
 }
 
 a {
@@ -209,13 +233,6 @@ a {
     display: none;
   }
 
-  .playlists {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 1rem;
-  }
-
   .liked-songs-container {
     margin-top: 0;
   }
@@ -229,10 +246,14 @@ a {
   .cards-side {
     width: 27rem;
   }
+
+  .songs-card-container {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @media screen and (device-width: 768px) and (device-height: 1024px) and (orientation: portrait) {
-  .playlists,
   .liked-songs {
     width: 45rem;
     display: grid;
@@ -277,6 +298,16 @@ a {
   .bottom-nav {
     display: block;
   }
+
+  .lower-page-portion {
+    height: 8%;
+  }
+}
+
+@media (max-width: 431px) {
+  .liked-song-icon-bottom {
+    visibility: hidden;
+  }
 }
 
 @media (max-width: 415px) {
@@ -303,12 +334,6 @@ a {
 
   .bottom-nav {
     display: block;
-  }
-
-  .playlists {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 }
 

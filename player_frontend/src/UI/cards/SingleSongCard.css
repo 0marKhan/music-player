@@ -81,7 +81,7 @@
   padding-top: 0.35rem;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1000px) {
   .song-card-container {
     margin: 0rem 1.5rem 0 1.5rem;
   }
@@ -92,5 +92,19 @@
 
   .right-side-details {
     width: 40%;
+  }
+}
+
+@media (max-width: 430px) {
+  .song-card-container {
+    margin: 0;
+  }
+
+  .img-portion {
+    width: 4rem;
+  }
+
+  .song-details {
+    font-size: 0.8rem;
   }
 }

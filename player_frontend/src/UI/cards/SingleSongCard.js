@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+
+import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 import "./SingleSongCard.css";
 import songContext from "../../contexts/songContext";
@@ -16,10 +18,10 @@ const SingleSongCard = ({ info, playSound }) => {
 
   return (
     // setting the current song to the song clicked
-    <div className="song-card-container" onClick={() => setCurrentSong(info)}>
+    <div className="song-card-container">
       <div className="song-card-main">
         {/* for display the play arrow when highlighted */}
-        <div className="play-song-button">
+        <div className="play-song-button" onClick={() => setCurrentSong(info)}>
           <PlayArrowIcon />
         </div>
         {/* for displaying the image with inline background style */}
@@ -37,7 +39,7 @@ const SingleSongCard = ({ info, playSound }) => {
             </div>
             <div className="duration">3:44</div>
             <div className="options-dots">
-              <MoreHorizIcon />
+              <DeleteIcon />
             </div>
           </div>
         </div>
