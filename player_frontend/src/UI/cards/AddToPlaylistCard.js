@@ -5,11 +5,18 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
-export default function ActionAreaCard({ playlistData, addSongToPlaylist }) {
+export default function ActionAreaCard({
+  playlistData,
+  addSongToPlaylist,
+  closeAddToPlaylistModal,
+}) {
   return (
     <Card
       sx={{ maxWidth: 150, borderRadius: 3 }}
-      onClick={() => addSongToPlaylist(playlistData._id)}
+      onClick={() => {
+        addSongToPlaylist(playlistData._id);
+        closeAddToPlaylistModal();
+      }}
     >
       <CardActionArea>
         <CardMedia

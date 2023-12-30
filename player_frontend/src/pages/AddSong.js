@@ -16,7 +16,13 @@ const AddSong = () => {
   const submitSong = async () => {
     const data = { name, thumbnail, track: playlistUrl };
     const response = await makeAuthenticatedPOSTRequest("/song/create", data);
-    console.log(response);
+    // console.log(response);
+
+    // Reset state values after song creation
+    setName("");
+    setThumbnail("");
+    setPlaylistUrl("");
+    setUploadedSongFileName(null);
   };
 
   const setNameHandler = (event) => {
@@ -53,7 +59,7 @@ const AddSong = () => {
             <div className="thumbnail-box">
               <TextInput
                 id="outlined-basic"
-                label="Thumbnail"
+                label="Thumbnail URL"
                 variant="outlined"
                 style={{ margin: "1.5rem 0rem 0 0rem" }}
                 value={thumbnail}

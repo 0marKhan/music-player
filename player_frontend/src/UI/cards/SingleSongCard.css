@@ -39,6 +39,7 @@
 .liked-song-icon {
   color: #676767;
   padding: 0.2rem 2rem 0 0;
+  cursor: pointer;
 }
 
 .duration {

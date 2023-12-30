@@ -11,5 +11,17 @@
 
 .playlist-page-title {
   color: #fff;
-  margin-right: 7rem;
+  margin-right: 6rem;
+}
+
+@media (max-width: 750px) {
+  .playlist-thumbnail {
+    visibility: hidden;
+    padding-right: 0;
+  }
+
+  .playlist-page-title {
+    padding: 0;
+    margin-right: 5rem;
+  }
 }

@@ -18,7 +18,7 @@ const User = new mongoose.Schema({
 
   likedSongs: {
     type: String,
-    default: "", // start as empty
+    ref: "Song",
   },
 });
 

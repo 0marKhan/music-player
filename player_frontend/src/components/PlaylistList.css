@@ -13,6 +13,11 @@
   justify-content: center;
 }
 
+.no-playlists-msg {
+  text-align: center;
+  color: #fff;
+}
+
 @media (max-width: 818px) {
   .playlists-display {
     width: 26rem;

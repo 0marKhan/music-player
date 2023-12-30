@@ -1,19 +1,13 @@
-.search-items {
-  margin-right: 2rem;
+.logout-btn-container {
+  display: flex;
+  justify-content: end;
 }
 
-.circular-profile-image {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-left: 7rem;
-  overflow: hidden;
-}
-
-.circular-profile-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.logout-btn {
+  width: 4rem;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bolder;
 }
 
 .add-playlist-mobile {

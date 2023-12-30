@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
-import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
+import FavoriteToggleIcon from "../../components/FavoriteToggleIcon";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Tooltip from "@mui/material/Tooltip";
 
 import "./SingleSongCard.css";
 import songContext from "../../contexts/songContext";
@@ -22,7 +23,9 @@ const SingleSongCard = ({ info, playSound }) => {
       <div className="song-card-main">
         {/* for display the play arrow when highlighted */}
         <div className="play-song-button" onClick={() => setCurrentSong(info)}>
-          <PlayArrowIcon />
+          <Tooltip title={`play ${info.name}`}>
+            <PlayArrowIcon />
+          </Tooltip>
         </div>
         {/* for displaying the image with inline background style */}
         <div className="img-portion" style={{ backgroundImage }}></div>
@@ -34,12 +37,11 @@ const SingleSongCard = ({ info, playSound }) => {
             <div className="artist-name">{info.artist.username}</div>
           </div>
           <div className="right-side-details">
-            <div className="liked-song-icon">
-              <FavoriteBorderIcon />
-            </div>
             <div className="duration">3:44</div>
             <div className="options-dots">
-              <DeleteIcon />
+              <Tooltip title="Delete Song">
+                <DeleteIcon />
+              </Tooltip>
             </div>
           </div>
         </div>

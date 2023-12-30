@@ -24,7 +24,7 @@ const Songs = () => {
     const getData = async () => {
       const response = await makeAuthenticatedGETRequest("/song/get/mysongs");
       setSongData(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     };
 
     getData();
@@ -49,7 +49,7 @@ const Songs = () => {
 
           <div className="songs-list">
             {songData.map((item) => (
-              <SingleSongCard info={item} playSound={() => {}} />
+              <SingleSongCard info={item} key={item._id} playSound={() => {}} />
             ))}
           </div>
         </div>

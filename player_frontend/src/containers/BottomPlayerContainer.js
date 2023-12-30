@@ -10,6 +10,8 @@ import { Howl, Howler } from "howler";
 import "../pages/Home.css";
 import AddToPlaylistModal from "../modals/AddToPlaylistModal";
 
+import FavoriteToggleIcon from "../components/FavoriteToggleIcon";
+import Tooltip from "@mui/material/Tooltip";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import PauseCircleIcon from "@mui/icons-material/PauseCircle";
@@ -54,6 +56,17 @@ const BottomPlayerContainer = ({ children }) => {
     changeSong(currentSong.track);
   }, [currentSong && currentSong.track]);
 
+  // for adding song to liked songs
+  const addSongToLikedSongs = async () => {
+    const songId = currentSong._id;
+    // Make an API request to add the song to the user's liked songs
+    const response = await makeAuthenticatedPOSTRequest(
+      "/user/liked-songs/add",
+      { songId }
+    );
+    console.log(response);
+  };
+
   // for adding the song to playlist
   const addSongToPlaylist = async (playlistId) => {
     const songId = currentSong._id;
@@ -65,7 +78,7 @@ const BottomPlayerContainer = ({ children }) => {
     );
     // closes the modal when the song is added
     if (response._id) {
-      closeAddToPlaylistModal(true);
+      closeAddToPlaylistModal();
     }
   };
 
@@ -144,7 +157,7 @@ const BottomPlayerContainer = ({ children }) => {
             </div>
             <div className="liked-song-icon-bottom">
               <div className="liked-container">
-                <FavoriteBorderIcon />
+                <FavoriteToggleIcon onClick={addSongToLikedSongs} />
               </div>
             </div>
           </div>
@@ -176,7 +189,9 @@ const BottomPlayerContainer = ({ children }) => {
           </div>
           <div className="third-portion-bottom">
             <div className="add-playlist-button">
-              <PlaylistAddIcon onClick={openAddToPlaylistModal} />
+              <Tooltip title="Add to a Playlist">
+                <PlaylistAddIcon onClick={openAddToPlaylistModal} />
+              </Tooltip>
             </div>
           </div>
         </div>

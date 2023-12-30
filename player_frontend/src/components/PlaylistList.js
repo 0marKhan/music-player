@@ -20,14 +20,18 @@ const PlaylistList = ({ addNewPlaylist }) => {
   return (
     <div>
       {/* if i have atleast one playlist display this else dont */}
-      {myPlaylists.length > 0 && (
+      {myPlaylists.length > 0 ? (
         <div className="playlists-display">
           {myPlaylists.map((item) => (
             <Link to={`/playlist-page/${item._id}`}>
-              <PlaylistCard playlistData={item} />
+              <PlaylistCard playlistData={item} key={item._id} />
             </Link>
           ))}
         </div>
+      ) : (
+        <h3 className="no-playlists-msg">
+          Create a new playlist to start adding songs to it
+        </h3>
       )}
     </div>
   );

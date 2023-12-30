@@ -56,6 +56,19 @@ const PlaylistPage = () => {
     );
   }
 
+  const placeholder = (
+    <div className="songs-container">
+      <div className="songs-title-section">
+        <div className="image-title">
+          <div className="playlist-thumbnail"></div>
+          <h1 className="playlist-page-title"></h1>
+        </div>
+        <div className="user-song-details">songs</div>
+        <Divider variant="middle" style={dividerStyle} />
+      </div>
+    </div>
+  );
+
   return (
     <BottomPlayerContainer>
       <div className="addsong-header">
@@ -65,7 +78,7 @@ const PlaylistPage = () => {
       </div>
 
       {/* renders the song list conditionally if a playlist.id exists */}
-      {playlistDetails._id && songList}
+      {playlistDetails._id ? songList : placeholder}
     </BottomPlayerContainer>
   );
 };

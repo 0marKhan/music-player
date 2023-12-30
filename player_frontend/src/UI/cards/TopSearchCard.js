@@ -1,37 +1,27 @@
 import React from "react";
-import SearchIcon from "@mui/icons-material/Search";
-import FilledTextInput from "../common/FilledTextInput";
+import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom";
 import "./TopSearchCard.css";
 
-import froggy from "../../assets/images/froggy.jpg";
-
 const TopSearchCard = () => {
+  const [cookie, setCookie, removeCookie] = useCookies(["token"]);
+
+  const logout = () => {
+    // Remove the 'token' cookie when logging out
+    removeCookie("token");
+    // You might want to redirect the user to the login page or perform other actions after logout
+  };
+
   return (
     <>
       <div className="add-playlist-mobile">Add Playlist</div>
       <Link to="/add-song">
         <div className="add-song-mobile">Add Song</div>
       </Link>
-      <div className="search-items">
-        <div className="searchbox">
-          <SearchIcon
-            style={{
-              color: "#fff",
-              marginTop: "1.2rem",
-              marginRight: "0.5rem",
-            }}
-          />
-          <FilledTextInput
-            id="standard"
-            label="Search a playlist"
-            variant="standard"
-          />
-        </div>
-      </div>
-      <div>
-        <div className="circular-profile-image">
-          <img src={froggy} alt="Froggy" />
+
+      <div className="logout-btn-container">
+        <div className="logout-btn" onClick={logout}>
+          Log Out
         </div>
       </div>
     </>

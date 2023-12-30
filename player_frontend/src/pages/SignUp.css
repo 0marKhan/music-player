@@ -1,3 +1,16 @@
 .signup-button {
   margin-top: 1.5rem;
 }
+
+.email-error-msg,
+.username-error-msg,
+.password-error-msg {
+  color: rgb(195, 39, 39);
+  padding-top: 0.5rem;
+}
+
+.empty-fields-error-msg {
+  color: rgb(195, 39, 39);
+  text-align: center;
+  padding-bottom: 2rem;
+}

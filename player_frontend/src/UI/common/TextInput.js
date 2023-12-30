@@ -1,7 +1,7 @@
 import TextField from "@mui/material/TextField";
 import { styled } from "@mui/material/styles";
 
-const TextInput = styled(TextField)(({ theme }) => ({
+const TextInput = styled(TextField)(({ theme, error }) => ({
   width: "25rem",
   textAlign: "center",
   "& .MuiInputBase-input": {
@@ -10,7 +10,7 @@ const TextInput = styled(TextField)(({ theme }) => ({
   "& .MuiOutlinedInput-root": {
     backgroundColor: "#2e2e2e",
     "& fieldset": {
-      borderColor: "#999",
+      borderColor: error ? "red" : "#999", // Set borderColor to red on error
       borderWidth: "2px",
       transition: "border-color 0.2s",
     },
@@ -18,18 +18,18 @@ const TextInput = styled(TextField)(({ theme }) => ({
       borderColor: "#fff",
     },
     "&.Mui-focused fieldset": {
-      borderColor: "#e30085",
+      borderColor: error ? "red" : "#e30085", // Set borderColor to red on error
       borderWidth: "2px",
       "&:not(.Mui-error)": {
-        borderBottom: "2px solid #e30085",
+        borderBottom: error ? "2px solid red" : "2px solid #e30085", // Set borderBottom to red on error
       },
     },
   },
   "& label.Mui-focused": {
-    color: "#fff",
+    color: error ? "red" : "#fff", // Set label color to red on error
   },
   "& label": {
-    color: "#fff",
+    color: error ? "red" : "#fff", // Set label color to red on error
   },
 
   "@media (max-width: 415px)": {
