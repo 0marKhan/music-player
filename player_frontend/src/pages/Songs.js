@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Howl, Howler } from "howler";
 
 import Divider from "@mui/material/Divider";
 import { makeAuthenticatedGETRequest } from "../utils/serverHelper";
@@ -8,7 +7,6 @@ import BottomPlayerContainer from "../containers/BottomPlayerContainer";
 import SingleSongCard from "../UI/cards/SingleSongCard";
 import "./Songs.css";
 import { Link } from "react-router-dom";
-import TextInput from "../UI/common/TextInput";
 
 const Songs = () => {
   const [songData, setSongData] = useState([]);
@@ -24,7 +22,7 @@ const Songs = () => {
     const getData = async () => {
       const response = await makeAuthenticatedGETRequest("/song/get/mysongs");
       setSongData(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     };
 
     getData();
@@ -49,7 +47,7 @@ const Songs = () => {
 
           <div className="songs-list">
             {songData.map((item) => (
-              <SingleSongCard info={item} playSound={() => {}} />
+              <SingleSongCard info={item} key={item._id} playSound={() => {}} />
             ))}
           </div>
         </div>

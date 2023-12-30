@@ -1,0 +1,27 @@
+.image-title {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.playlist-thumbnail {
+  padding-right: 2rem;
+  height: 5rem;
+  width: 5rem;
+}
+
+.playlist-page-title {
+  color: #fff;
+  margin-right: 6rem;
+}
+
+@media (max-width: 750px) {
+  .playlist-thumbnail {
+    visibility: hidden;
+    padding-right: 0;
+  }
+
+  .playlist-page-title {
+    padding: 0;
+    margin-right: 5rem;
+  }
+}

@@ -13,7 +13,9 @@ import Logo from "../assets/images/logo.png";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [cookie, setCookie] = useCookies(["token"]);
+  const [errorCheck, setErrorCheck] = useState(false);
 
   // for going to home page after signing up
   const navigate = useNavigate();
@@ -25,7 +27,8 @@ const Login = () => {
         "/auth/login",
         data
       );
-      if (response) {
+
+      if (!response.err) {
         console.log(response);
         alert("Success");
         // console.log(response);
@@ -40,8 +43,9 @@ const Login = () => {
         // making it so the cookie epires after 30 days
         setCookie("token", token, { path: "/", expires: date });
         navigate("/home");
+        setErrorCheck(false);
       } else {
-        alert("Failure");
+        setErrorCheck(true);
       }
     } catch (error) {
       console.error("Error during registration:", error);
@@ -60,7 +64,7 @@ const Login = () => {
   return (
     <>
       <div className="roam-logo">
-        <img src={Logo} />
+        <img src={Logo} alt="logo" />
       </div>
       <div className="login-form">
         <div className="email-field">
@@ -84,17 +88,15 @@ const Login = () => {
           />
         </div>
         <div className="login-button">
-          <Link to="home">
-            <PurpleButton
-              onClick={submitHandler}
-              variant="contained"
-              style={{
-                height: "3rem",
-              }}
-            >
-              Login
-            </PurpleButton>
-          </Link>
+          <PurpleButton
+            onClick={submitHandler}
+            variant="contained"
+            style={{
+              height: "3rem",
+            }}
+          >
+            Login
+          </PurpleButton>
         </div>
         {/* change to link later */}
         <div className="forgot-password">
@@ -107,6 +109,9 @@ const Login = () => {
           </p>
         </div>
       </div>
+      {errorCheck && (
+        <div className="error-msg">Incorrect username or password</div>
+      )}
     </>
   );
 };

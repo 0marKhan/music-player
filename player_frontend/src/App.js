@@ -1,4 +1,4 @@
-import { Navigate, Route, RouterProvider, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 import SignUp from "./pages/SignUp";
@@ -7,14 +7,11 @@ import LoggedInHome from "./pages/LoggedInHome";
 import Songs from "./pages/Songs";
 import AddSong from "./pages/AddSong";
 import songContext from "./contexts/songContext";
+import PlaylistPage from "./pages/PlaylistPage";
 
 import "./App.css";
 import { useState } from "react";
 import SearchSong from "./pages/SearchSong";
-
-const NotFound = () => {
-  return <h1>404 - Page Not Found</h1>;
-};
 
 function App() {
   const [currentSong, setCurrentSong] = useState(null);
@@ -22,6 +19,7 @@ function App() {
   const [soundPlayed, setSoundPlayed] = useState(null);
   // initially tru because we arent playing any song and its paused
   const [isPaused, setIsPaused] = useState(true);
+  // eslint-disable-next-line no-unused-vars
   const [cookie, setCookie] = useCookies(["token"]);
 
   return (
@@ -44,6 +42,10 @@ function App() {
             <Route path="/songs" element={<Songs />} />
             <Route path="/add-song" element={<AddSong />} />
             <Route path="/search-songs" element={<SearchSong />} />
+            <Route
+              path="/playlist-page/:playlistId"
+              element={<PlaylistPage />}
+            />
             <Route path="*" element={<Navigate to="/home" />} />
           </Routes>
         </songContext.Provider>

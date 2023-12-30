@@ -1,22 +1,19 @@
-import React, {
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
-import { Howl, Howler } from "howler";
+import React, { useContext, useLayoutEffect, useRef, useState } from "react";
+import { Howl } from "howler";
 
 import "../pages/Home.css";
 import AddToPlaylistModal from "../modals/AddToPlaylistModal";
 
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteToggleIcon from "../components/FavoriteToggleIcon";
+import Tooltip from "@mui/material/Tooltip";
+
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import PauseCircleIcon from "@mui/icons-material/PauseCircle";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import songContext from "../contexts/songContext";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
+import { makeAuthenticatedPOSTRequest } from "../utils/serverHelper";
 
 const BottomPlayerContainer = ({ children }) => {
   const [addToPlaylistModalOpen, setAddToPlaylistModalOpen] = useState(false);
@@ -31,7 +28,7 @@ const BottomPlayerContainer = ({ children }) => {
   // gets the current value of song from context
   const {
     currentSong,
-    setCurrentSong,
+
     soundPlayed,
     setSoundPlayed,
     isPaused,
@@ -51,7 +48,34 @@ const BottomPlayerContainer = ({ children }) => {
       return;
     }
     changeSong(currentSong.track);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentSong && currentSong.track]);
+
+  // for adding song to liked songs
+  const addSongToLikedSongs = async () => {
+    const songId = currentSong._id;
+    // Make an API request to add the song to the user's liked songs
+    const response = await makeAuthenticatedPOSTRequest(
+      "/user/liked-songs/add",
+      { songId }
+    );
+    console.log(response);
+  };
+
+  // for adding the song to playlist
+  const addSongToPlaylist = async (playlistId) => {
+    const songId = currentSong._id;
+    const payload = { playlistId, songId };
+
+    const response = await makeAuthenticatedPOSTRequest(
+      "/playlist/add/song",
+      payload
+    );
+    // closes the modal when the song is added
+    if (response._id) {
+      closeAddToPlaylistModal();
+    }
+  };
 
   const playSound = () => {
     // first checks if there is a valid soundPlayed instance in the useState
@@ -105,7 +129,10 @@ const BottomPlayerContainer = ({ children }) => {
     <div className="main-container">
       {/* modal for adding to a playlist */}
       {addToPlaylistModalOpen && (
-        <AddToPlaylistModal closeAddToPlaylistModal={closeAddToPlaylistModal} />
+        <AddToPlaylistModal
+          addSongToPlaylist={addSongToPlaylist}
+          closeAddToPlaylistModal={closeAddToPlaylistModal}
+        />
       )}
       {children}
       {/* conditionally render the bottom audio bar if there is a current song*/}
@@ -125,7 +152,7 @@ const BottomPlayerContainer = ({ children }) => {
             </div>
             <div className="liked-song-icon-bottom">
               <div className="liked-container">
-                <FavoriteBorderIcon />
+                <FavoriteToggleIcon onClick={addSongToLikedSongs} />
               </div>
             </div>
           </div>
@@ -157,7 +184,9 @@ const BottomPlayerContainer = ({ children }) => {
           </div>
           <div className="third-portion-bottom">
             <div className="add-playlist-button">
-              <PlaylistAddIcon onClick={openAddToPlaylistModal} />
+              <Tooltip title="Add to a Playlist">
+                <PlaylistAddIcon onClick={openAddToPlaylistModal} />
+              </Tooltip>
             </div>
           </div>
         </div>

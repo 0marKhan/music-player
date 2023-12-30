@@ -15,14 +15,56 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const [usernameError, setUsernameError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [emptyFieldsError, setEmptyFieldsError] = useState(false);
 
   // for getting the setCookie function
+  // eslint-disable-next-line no-unused-vars
   const [cookie, setCookie] = useCookies(["token"]);
 
   // for going to home page after signing up
   const navigate = useNavigate();
 
+  // for validations
+
+  const validateEmail = () => {
+    const emailPattern = /\S+@\S+\.\S+/;
+    const validEmail = emailPattern.test(email);
+    setEmailError(!validEmail);
+    return validEmail;
+  };
+
+  const validateUsername = () => {
+    const usernamePattern = /^[a-zA-Z0-9_]{3,}$/;
+    const validUsername = usernamePattern.test(username);
+    setUsernameError(!validUsername);
+    return validUsername;
+  };
+
+  const validatePassword = () => {
+    const validPassword = password.length >= 7;
+    setPasswordError(!validPassword);
+    return validPassword;
+  };
+
+  const validateEmptyFields = () => {
+    const emptyFields = !email || !password || !username;
+    setEmptyFieldsError(emptyFields);
+    return !emptyFields;
+  };
+
   const submitHandler = async () => {
+    if (
+      !validateEmptyFields() ||
+      !validateEmail() ||
+      !validateUsername() ||
+      !validatePassword()
+    ) {
+      return;
+    }
+
     const data = { email, password, username };
     try {
       const response = await makeUnauthenticatedPOSTRequest(
@@ -67,7 +109,7 @@ const SignUp = () => {
   return (
     <>
       <div className="roam-logo">
-        <img src={Logo} />
+        <img src={Logo} alt="logo" />
       </div>
       <div className="login-form">
         <div className="username-field">
@@ -76,9 +118,15 @@ const SignUp = () => {
             label="Enter your username"
             variant="outlined"
             style={{ margin: "1.5rem 0rem 0 0rem" }}
+            error={usernameError}
             onChange={setUsernameHandler}
             value={username}
           />
+          {usernameError && (
+            <div className="username-error-msg">
+              Username must be at least 3 characters with no symbols
+            </div>
+          )}
         </div>
         <div className="email-field">
           <TextInput
@@ -86,9 +134,13 @@ const SignUp = () => {
             label="Enter your email"
             variant="outlined"
             style={{ margin: "1.5rem 0rem 0 0rem" }}
+            error={emailError}
             onChange={setEmailHandler}
             value={email}
           />
+          {emailError && (
+            <div className="email-error-msg">Please enter a valid email</div>
+          )}
         </div>
         <div className="password-field">
           <HiddenPasswordInput
@@ -98,7 +150,13 @@ const SignUp = () => {
             style={{ margin: "1.5rem 0rem 0 0rem" }}
             onChange={setPasswordHandler}
             value={password}
+            error={passwordError}
           />
+          {passwordError && (
+            <div className="password-error-msg">
+              Password must be at least 7 characters long
+            </div>
+          )}
         </div>
         <div className="signup-button">
           <PurpleButton
@@ -118,6 +176,9 @@ const SignUp = () => {
           </p>
         </div>
       </div>
+      {emptyFieldsError && (
+        <div className="empty-fields-error-msg">Please fill all fields</div>
+      )}
     </>
   );
 };

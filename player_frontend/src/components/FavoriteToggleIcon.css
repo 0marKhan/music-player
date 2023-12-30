@@ -1,0 +1,17 @@
+@keyframes bumpAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.bump-animation {
+  animation-name: bumpAnimation;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+}

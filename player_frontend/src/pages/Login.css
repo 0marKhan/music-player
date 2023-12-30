@@ -19,6 +19,11 @@ img {
   width: 6rem;
 }
 
+.error-msg {
+  text-align: center;
+  color: rgb(195, 39, 39);
+}
+
 .forgot-password {
   margin-top: 1rem;
 }
