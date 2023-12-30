@@ -18,7 +18,10 @@ const port = 3000;
 
 app.use(
   cors({
-    origin: ["http://localhost:3001", "https://music-player.com"],
+    origin: [
+      "http://localhost:3001",
+      "https://music-player-backend-bbei.onrender.com",
+    ],
   })
 ); //allowing the backend to work with the frontend
 // converts arriving bodies of data into json for expres
@@ -67,6 +70,6 @@ app.use("/auth", authRoutes);
 app.use("/song", songRoutes);
 app.use("/playlist", playlistRoutes);
 
-app.listen(port, () => {
+app.listen(port || "https://music-player-backend-bbei.onrender.com", () => {
   console.log("App is running on port: " + port);
 });
