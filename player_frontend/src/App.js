@@ -7,6 +7,7 @@ import LoggedInHome from "./pages/LoggedInHome";
 import Songs from "./pages/Songs";
 import AddSong from "./pages/AddSong";
 import songContext from "./contexts/songContext";
+import PlaylistPage from "./pages/PlaylistPage";
 
 import "./App.css";
 import { useState } from "react";
@@ -44,6 +45,10 @@ function App() {
             <Route path="/songs" element={<Songs />} />
             <Route path="/add-song" element={<AddSong />} />
             <Route path="/search-songs" element={<SearchSong />} />
+            <Route
+              path="/playlist-page/:playlistId"
+              element={<PlaylistPage />}
+            />
             <Route path="*" element={<Navigate to="/home" />} />
           </Routes>
         </songContext.Provider>

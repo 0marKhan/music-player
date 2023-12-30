@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import PlaylistCard from "../UI/cards/PlaylistCard";
 import { makeAuthenticatedGETRequest } from "../utils/serverHelper";
 import "./PlaylistList.css";
+import { Link } from "react-router-dom";
 
 const PlaylistList = ({ addNewPlaylist }) => {
   const [myPlaylists, setMyPlaylists] = useState([]);
@@ -22,7 +23,9 @@ const PlaylistList = ({ addNewPlaylist }) => {
       {myPlaylists.length > 0 && (
         <div className="playlists-display">
           {myPlaylists.map((item) => (
-            <PlaylistCard playlistData={item} key={item._id} />
+            <Link to={`/playlist-page/${item._id}`}>
+              <PlaylistCard playlistData={item} />
+            </Link>
           ))}
         </div>
       )}

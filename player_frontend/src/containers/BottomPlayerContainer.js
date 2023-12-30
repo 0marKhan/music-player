@@ -17,6 +17,7 @@ import SkipNextIcon from "@mui/icons-material/SkipNext";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import songContext from "../contexts/songContext";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
+import { makeAuthenticatedPOSTRequest } from "../utils/serverHelper";
 
 const BottomPlayerContainer = ({ children }) => {
   const [addToPlaylistModalOpen, setAddToPlaylistModalOpen] = useState(false);
@@ -52,6 +53,21 @@ const BottomPlayerContainer = ({ children }) => {
     }
     changeSong(currentSong.track);
   }, [currentSong && currentSong.track]);
+
+  // for adding the song to playlist
+  const addSongToPlaylist = async (playlistId) => {
+    const songId = currentSong._id;
+    const payload = { playlistId, songId };
+
+    const response = await makeAuthenticatedPOSTRequest(
+      "/playlist/add/song",
+      payload
+    );
+    // closes the modal when the song is added
+    if (response._id) {
+      closeAddToPlaylistModal(true);
+    }
+  };
 
   const playSound = () => {
     // first checks if there is a valid soundPlayed instance in the useState
@@ -105,7 +121,10 @@ const BottomPlayerContainer = ({ children }) => {
     <div className="main-container">
       {/* modal for adding to a playlist */}
       {addToPlaylistModalOpen && (
-        <AddToPlaylistModal closeAddToPlaylistModal={closeAddToPlaylistModal} />
+        <AddToPlaylistModal
+          addSongToPlaylist={addSongToPlaylist}
+          closeAddToPlaylistModal={closeAddToPlaylistModal}
+        />
       )}
       {children}
       {/* conditionally render the bottom audio bar if there is a current song*/}

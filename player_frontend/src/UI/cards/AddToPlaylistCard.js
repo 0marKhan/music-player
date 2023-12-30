@@ -5,9 +5,12 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
-export default function ActionAreaCard({ playlistData }) {
+export default function ActionAreaCard({ playlistData, addSongToPlaylist }) {
   return (
-    <Card sx={{ maxWidth: 150, borderRadius: 3 }}>
+    <Card
+      sx={{ maxWidth: 150, borderRadius: 3 }}
+      onClick={() => addSongToPlaylist(playlistData._id)}
+    >
       <CardActionArea>
         <CardMedia
           component="img"

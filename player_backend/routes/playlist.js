@@ -35,7 +35,9 @@ router.get(
   async (req, res) => {
     // gets the dynamic value from the playlistId variable
     const playlistId = req.params.playlistId;
-    const playlist = await Playlist.findOne({ _id: playlistId });
+    const playlist = await Playlist.findOne({ _id: playlistId }).populate(
+      "songs"
+    );
     if (!playlist) {
       return res.status(301).json({ err: "Invalid Id" });
     }

@@ -4,7 +4,7 @@ import "./AddToPlaylistModal.css";
 import { makeAuthenticatedGETRequest } from "../utils/serverHelper";
 import AddToPlaylistCard from "../UI/cards/AddToPlaylistCard";
 
-const AddToPlaylistModal = ({ closeAddToPlaylistModal }) => {
+const AddToPlaylistModal = ({ closeAddToPlaylistModal, addSongToPlaylist }) => {
   const [myPlaylists, setMyPlaylists] = useState([]);
 
   useEffect(() => {
@@ -27,7 +27,11 @@ const AddToPlaylistModal = ({ closeAddToPlaylistModal }) => {
 
         <div className="playlists-displayed-in-modal">
           {myPlaylists.map((item) => (
-            <AddToPlaylistCard playlistData={item} />
+            <AddToPlaylistCard
+              key={item.id}
+              playlistData={item}
+              addSongToPlaylist={addSongToPlaylist}
+            />
           ))}
         </div>
       </div>
