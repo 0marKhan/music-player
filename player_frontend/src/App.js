@@ -1,4 +1,4 @@
-import { Navigate, Route, RouterProvider, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 import SignUp from "./pages/SignUp";
@@ -13,16 +13,13 @@ import "./App.css";
 import { useState } from "react";
 import SearchSong from "./pages/SearchSong";
 
-const NotFound = () => {
-  return <h1>404 - Page Not Found</h1>;
-};
-
 function App() {
   const [currentSong, setCurrentSong] = useState(null);
   // sound played is initially null because we arent playing any song
   const [soundPlayed, setSoundPlayed] = useState(null);
   // initially tru because we arent playing any song and its paused
   const [isPaused, setIsPaused] = useState(true);
+  // eslint-disable-next-line no-unused-vars
   const [cookie, setCookie] = useCookies(["token"]);
 
   return (

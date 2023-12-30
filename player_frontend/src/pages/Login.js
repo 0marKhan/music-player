@@ -13,6 +13,7 @@ import Logo from "../assets/images/logo.png";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [cookie, setCookie] = useCookies(["token"]);
   const [errorCheck, setErrorCheck] = useState(false);
 
@@ -63,7 +64,7 @@ const Login = () => {
   return (
     <>
       <div className="roam-logo">
-        <img src={Logo} />
+        <img src={Logo} alt="logo" />
       </div>
       <div className="login-form">
         <div className="email-field">

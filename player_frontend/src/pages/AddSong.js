@@ -16,7 +16,7 @@ const AddSong = () => {
   const submitSong = async () => {
     const data = { name, thumbnail, track: playlistUrl };
     const response = await makeAuthenticatedPOSTRequest("/song/create", data);
-    // console.log(response);
+    console.log(response);
 
     // Reset state values after song creation
     setName("");
@@ -31,10 +31,6 @@ const AddSong = () => {
 
   const setThumbnailHandler = (event) => {
     setThumbnail(event.target.value);
-  };
-
-  const setPlaylistUrlHandler = (event) => {
-    setPlaylistUrl(event.target.value);
   };
 
   return (

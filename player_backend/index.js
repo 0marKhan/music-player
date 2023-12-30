@@ -10,11 +10,17 @@ const authRoutes = require("./routes/auth");
 const songRoutes = require("./routes/song");
 const playlistRoutes = require("./routes/playlist");
 
+require("dotenv").config();
+
 const cors = require("cors");
 const app = express();
 const port = 3000;
 
-app.use(cors()); //allowing the backend to work with the frontend
+app.use(
+  cors({
+    origin: ["http://localhost:3001", "https://music-player.com"],
+  })
+); //allowing the backend to work with the frontend
 // converts arriving bodies of data into json for expres
 app.use(express.json());
 

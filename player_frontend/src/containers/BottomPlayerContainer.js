@@ -1,18 +1,12 @@
-import React, {
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
-import { Howl, Howler } from "howler";
+import React, { useContext, useLayoutEffect, useRef, useState } from "react";
+import { Howl } from "howler";
 
 import "../pages/Home.css";
 import AddToPlaylistModal from "../modals/AddToPlaylistModal";
 
 import FavoriteToggleIcon from "../components/FavoriteToggleIcon";
 import Tooltip from "@mui/material/Tooltip";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import PauseCircleIcon from "@mui/icons-material/PauseCircle";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
@@ -34,7 +28,7 @@ const BottomPlayerContainer = ({ children }) => {
   // gets the current value of song from context
   const {
     currentSong,
-    setCurrentSong,
+
     soundPlayed,
     setSoundPlayed,
     isPaused,
@@ -54,6 +48,7 @@ const BottomPlayerContainer = ({ children }) => {
       return;
     }
     changeSong(currentSong.track);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentSong && currentSong.track]);
 
   // for adding song to liked songs

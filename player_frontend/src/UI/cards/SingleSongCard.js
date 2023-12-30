@@ -1,8 +1,5 @@
 import React, { useContext } from "react";
 
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-
-import FavoriteToggleIcon from "../../components/FavoriteToggleIcon";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Tooltip from "@mui/material/Tooltip";
@@ -13,7 +10,7 @@ import songContext from "../../contexts/songContext";
 const SingleSongCard = ({ info, playSound }) => {
   const { currentSong, setCurrentSong } = useContext(songContext);
   // checking if clicking the song changes the song to current song
-  // console.log(currentSong);
+  console.log(currentSong);
 
   const backgroundImage = `url('${info.thumbnail}')`;
 

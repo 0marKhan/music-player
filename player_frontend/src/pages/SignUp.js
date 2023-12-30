@@ -21,6 +21,7 @@ const SignUp = () => {
   const [emptyFieldsError, setEmptyFieldsError] = useState(false);
 
   // for getting the setCookie function
+  // eslint-disable-next-line no-unused-vars
   const [cookie, setCookie] = useCookies(["token"]);
 
   // for going to home page after signing up
@@ -108,7 +109,7 @@ const SignUp = () => {
   return (
     <>
       <div className="roam-logo">
-        <img src={Logo} />
+        <img src={Logo} alt="logo" />
       </div>
       <div className="login-form">
         <div className="username-field">

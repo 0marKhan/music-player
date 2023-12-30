@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./TopSearchCard.css";
 
 const TopSearchCard = () => {
+  // eslint-disable-next-line no-unused-vars
   const [cookie, setCookie, removeCookie] = useCookies(["token"]);
 
   const logout = () => {

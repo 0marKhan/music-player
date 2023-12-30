@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Tooltip from "@mui/material/Tooltip";
+
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import "./FavoriteToggleIcon.css";

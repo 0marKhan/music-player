@@ -26,7 +26,7 @@ const PlaylistPage = () => {
       setPlaylistDetails(response);
     };
     getData();
-  }, []);
+  });
 
   let songList = null;
 
@@ -37,7 +37,7 @@ const PlaylistPage = () => {
         <div className="songs-title-section">
           <div className="image-title">
             <div className="playlist-thumbnail">
-              <img src={playlistDetails.thumbnail} />
+              <img src={playlistDetails.thumbnail} alt="thumbnail" />
             </div>
             <h1 className="playlist-page-title">{playlistDetails.name}</h1>
           </div>
@@ -61,7 +61,6 @@ const PlaylistPage = () => {
       <div className="songs-title-section">
         <div className="image-title">
           <div className="playlist-thumbnail"></div>
-          <h1 className="playlist-page-title"></h1>
         </div>
         <div className="user-song-details">songs</div>
         <Divider variant="middle" style={dividerStyle} />
