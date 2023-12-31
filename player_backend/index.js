@@ -24,16 +24,25 @@ app.use(
 // converts arriving bodies of data into json for expres
 app.use(express.json());
 
+let mongooseURI = "";
+
+if (process.env.NODE_ENV === "production") {
+  // Use the production MongoDB URI
+  mongooseURI = process.env.MONGO_URI;
+} else {
+  // Use the local MongoDB URI
+  mongooseURI =
+    "mongodb+srv://khan:" +
+    process.env.MONGO_PASSWORD +
+    "@cluster0.1y3qzle.mongodb.net/?retryWrites=true&w=majority";
+}
+
 // connecting mongodb to node app
 // takes two arguments
 // (1) which db we're connecting to (db url)
 // (2) connection options
 mongoose
-  .connect(
-    "mongodb+srv://khan:" +
-      process.env.MONGO_PASSWORD +
-      "@cluster0.1y3qzle.mongodb.net/?retryWrites=true&w=majority"
-  )
+  .connect(mongooseURI)
   .then((x) => {
     console.log("Connected to MongoDB");
   })
