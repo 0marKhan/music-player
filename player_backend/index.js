@@ -19,6 +19,7 @@ app.use(
       "http://localhost:3001",
       "https://music-player-backend-bbei.onrender.com",
     ],
+    credentials: true,
   })
 ); //allowing the backend to work with the frontend
 // converts arriving bodies of data into json for expres
@@ -45,6 +46,7 @@ mongoose
   .connect(mongooseURI)
   .then((x) => {
     console.log("Connected to MongoDB");
+    console.log(mongooseURI);
   })
   .catch((err) => {
     console.error("Error connecting to MongoDB:", err);
