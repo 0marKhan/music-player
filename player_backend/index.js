@@ -19,6 +19,7 @@ app.use(
       "http://localhost:3001",
       "https://music-player-backend-bbei.onrender.com",
     ],
+    credentials: true,
   })
 ); //allowing the backend to work with the frontend
 // converts arriving bodies of data into json for expres
