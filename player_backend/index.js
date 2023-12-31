@@ -13,15 +13,21 @@ const cors = require("cors");
 const app = express();
 const port = 3000;
 
-app.use(
-  cors({
-    origin: [
-      "http://localhost:3001",
-      "https://music-player-backend-bbei.onrender.com",
-    ],
-    credentials: true,
-  })
-); //allowing the backend to work with the frontend
+// Custom middleware for setting CORS headers globally
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*"); // Set your appropriate origin here
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
+    return res.status(200).json({});
+  }
+  next();
+});
+
+app.use(cors()); // Use cors middleware to allow CORS for all routes //allowing the backend to work with the frontend
 // converts arriving bodies of data into json for expres
 app.use(express.json());
 
