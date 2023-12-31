@@ -70,6 +70,6 @@ app.use("/auth", authRoutes);
 app.use("/song", songRoutes);
 app.use("/playlist", playlistRoutes);
 
-app.listen(port || "https://music-player-backend-bbei.onrender.com", () => {
+app.listen(port || process.env.PORT, () => {
   console.log("App is running on port: " + port);
 });
