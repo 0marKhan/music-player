@@ -39,9 +39,7 @@ if (process.env.NODE_ENV === "production") {
 } else {
   // Use the local MongoDB URI
   mongooseURI =
-    "mongodb+srv://khan:" +
-    process.env.MONGO_PASSWORD +
-    "@cluster0.1y3qzle.mongodb.net/?retryWrites=true&w=majority";
+    "mongodb+srv://khan:Ptq4FEE7u974i7yj@cluster0.1y3qzle.mongodb.net/?retryWrites=true&w=majority";
 }
 
 // connecting mongodb to node app
