@@ -6,9 +6,9 @@ import Login from "./pages/Login";
 import LoggedInHome from "./pages/LoggedInHome";
 import Songs from "./pages/Songs";
 import AddSong from "./pages/AddSong";
-import songContext from "./contexts/songContext";
-import PlaylistPage from "./pages/PlaylistPage";
 
+import PlaylistPage from "./pages/PlaylistPage";
+import songContext from "./contexts/songContext";
 import "./App.css";
 import { useState } from "react";
 import SearchSong from "./pages/SearchSong";
