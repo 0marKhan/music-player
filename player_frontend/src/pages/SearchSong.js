@@ -5,6 +5,7 @@ import TextInput from "../UI/common/TextInput";
 import SingleSongCard from "../UI/cards/SingleSongCard";
 import BottomPlayerContainer from "../containers/BottomPlayerContainer";
 import { Link } from "react-router-dom";
+import SimpleBottomNavigation from "../components/SimpleBottomNavigation";
 
 const SearchSong = () => {
   const [searchSongData, setSearchSongData] = useState([]);
@@ -61,6 +62,10 @@ const SearchSong = () => {
             Nothing to show here, try entering a song to search it
           </p>
         )}
+      </div>
+      {/* for phone view */}
+      <div className="bottom-nav">
+        <SimpleBottomNavigation />
       </div>
     </BottomPlayerContainer>
   );

@@ -6,6 +6,7 @@ import TextInput from "../UI/common/TextInput";
 import CloudinaryUpload from "../components/CloudinaryUpload";
 import { makeAuthenticatedPOSTRequest } from "../utils/serverHelper";
 import BottomPlayerContainer from "../containers/BottomPlayerContainer";
+import SimpleBottomNavigation from "../components/SimpleBottomNavigation";
 
 const AddSong = () => {
   const [name, setName] = useState("");
@@ -87,6 +88,10 @@ const AddSong = () => {
             <div></div>
           )}
         </div>
+      </div>
+      {/* for phone view */}
+      <div className="bottom-nav">
+        <SimpleBottomNavigation />
       </div>
     </BottomPlayerContainer>
   );

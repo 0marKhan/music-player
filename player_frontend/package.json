@@ -15,6 +15,7 @@
     "class-variance-authority": "^0.7.0",
     "cloudinary-core": "^2.13.0",
     "clsx": "^2.0.0",
+    "cypress": "^13.6.2",
     "howler": "^2.2.4",
     "lottie-react": "^2.4.0",
     "lottie-web": "^5.12.2",

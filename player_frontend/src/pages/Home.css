@@ -291,6 +291,10 @@ a {
     margin-bottom: 5rem;
   }
 
+  .nav-card-container {
+    height: 100vh;
+  }
+
   .nav-side {
     display: none;
   }
@@ -301,6 +305,7 @@ a {
 
   .lower-page-portion {
     height: 8%;
+    bottom: 6%;
   }
 }
 
