@@ -12,6 +12,7 @@ import PlaylistPage from "./pages/PlaylistPage";
 import "./App.css";
 import { useState } from "react";
 import SearchSong from "./pages/SearchSong";
+import LikedSongs from "./pages/LikedSongs";
 
 function App() {
   const [currentSong, setCurrentSong] = useState(null);
@@ -41,6 +42,7 @@ function App() {
             <Route path="/home" element={<LoggedInHome />} />
             <Route path="/songs" element={<Songs />} />
             <Route path="/add-song" element={<AddSong />} />
+            <Route path="/liked-songs" element={<LikedSongs />} />
             <Route path="/search-songs" element={<SearchSong />} />
             <Route
               path="/playlist-page/:playlistId"
