@@ -18,6 +18,12 @@
   color: #fff;
 }
 
+.loading-placeholder {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
 @media (max-width: 818px) {
   .playlists-display {
     width: 26rem;
