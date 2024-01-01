@@ -3,6 +3,7 @@ import React from "react";
 import "./LikedSongs.css";
 import BottomPlayerContainer from "../containers/BottomPlayerContainer";
 import { Link } from "react-router-dom";
+import SimpleBottomNavigation from "../components/SimpleBottomNavigation";
 
 const LikedSongs = () => {
   return (
