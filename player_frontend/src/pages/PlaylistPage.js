@@ -6,6 +6,7 @@ import "./Songs.css";
 import { makeAuthenticatedGETRequest } from "../utils/serverHelper";
 import { Divider } from "@mui/material";
 import SingleSongCard from "../UI/cards/SingleSongCard";
+import SimpleBottomNavigation from "../components/SimpleBottomNavigation";
 
 const PlaylistPage = () => {
   const [playlistDetails, setPlaylistDetails] = useState({});
@@ -78,6 +79,10 @@ const PlaylistPage = () => {
 
       {/* renders the song list conditionally if a playlist.id exists */}
       {playlistDetails._id ? songList : placeholder}
+      {/* for phone view */}
+      <div className="bottom-nav">
+        <SimpleBottomNavigation />
+      </div>
     </BottomPlayerContainer>
   );
 };
