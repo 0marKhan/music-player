@@ -42,7 +42,7 @@ const LoggedInHome = () => {
 
       <div className="upper-page-portion">
         <div className="search-playlist">
-          <TopSearchCard />
+          <TopSearchCard openCreatePlaylistModal={openCreatePlaylistModal} />
         </div>
         <div className="nav-card-container">
           <div className="nav-side">

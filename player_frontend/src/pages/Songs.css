@@ -33,3 +33,9 @@
 .home-from-songs-link {
   color: #fff;
 }
+
+@media (max-width: 430px) {
+  .addsong-header {
+    visibility: hidden;
+  }
+}

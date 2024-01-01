@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom";
+
 import "./TopSearchCard.css";
 import songContext from "../../contexts/songContext";
 
-const TopSearchCard = () => {
+const TopSearchCard = ({ openCreatePlaylistModal }) => {
   // eslint-disable-next-line no-unused-vars
   const [cookie, setCookie, removeCookie] = useCookies(["token"]);
   const { setCurrentSong, setSoundPlayed, setIsPaused } =
@@ -20,7 +21,9 @@ const TopSearchCard = () => {
 
   return (
     <>
-      <div className="add-playlist-mobile">Add Playlist</div>
+      <div className="add-playlist-mobile" onClick={openCreatePlaylistModal}>
+        Add Playlist
+      </div>
       <Link to="/add-song">
         <div className="add-song-mobile">Add Song</div>
       </Link>
