@@ -1,4 +1,10 @@
-import React, { useContext, useLayoutEffect, useRef, useState } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { Howl } from "howler";
 
 import "../pages/Home.css";
@@ -11,12 +17,37 @@ import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import PauseCircleIcon from "@mui/icons-material/PauseCircle";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
+
 import songContext from "../contexts/songContext";
+
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import { makeAuthenticatedPOSTRequest } from "../utils/serverHelper";
+import { useCookies } from "react-cookie";
 
 const BottomPlayerContainer = ({ children }) => {
   const [addToPlaylistModalOpen, setAddToPlaylistModalOpen] = useState(false);
+
+  // gets the current value of song from context
+  const {
+    currentSong,
+    setCurrentSong,
+    soundPlayed,
+    setSoundPlayed,
+    isPaused,
+    setIsPaused,
+  } = useContext(songContext);
+
+  // code for checking if logged out to stop playing song and set context to null
+  const [cookies] = useCookies(["token"]); // Retrieve token cookie
+  useEffect(() => {
+    if (!cookies.token) {
+      soundPlayed.stop();
+      setCurrentSong(null);
+      setSoundPlayed(null);
+      setIsPaused(null);
+      soundPlayed.stop();
+    }
+  }, [cookies.token, soundPlayed, setCurrentSong, setSoundPlayed, setIsPaused]);
 
   const openAddToPlaylistModal = () => {
     setAddToPlaylistModalOpen(true);
@@ -25,15 +56,6 @@ const BottomPlayerContainer = ({ children }) => {
   const closeAddToPlaylistModal = () => {
     setAddToPlaylistModalOpen(false);
   };
-  // gets the current value of song from context
-  const {
-    currentSong,
-
-    soundPlayed,
-    setSoundPlayed,
-    isPaused,
-    setIsPaused,
-  } = useContext(songContext);
 
   const firstUpdate = useRef(true);
 

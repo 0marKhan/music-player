@@ -10,6 +10,10 @@
   font-weight: bolder;
 }
 
+.logout-btn:hover {
+  color: #e30085;
+}
+
 .add-playlist-mobile {
   display: none;
 }
@@ -40,6 +44,10 @@
 }
 
 @media screen and (max-width: 415px) {
+  .logout-btn-container {
+    padding-top: 0.5rem;
+  }
+
   .search-items {
     display: none;
   }

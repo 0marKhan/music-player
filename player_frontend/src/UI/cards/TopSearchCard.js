@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom";
 import "./TopSearchCard.css";
+import songContext from "../../contexts/songContext";
 
 const TopSearchCard = () => {
   // eslint-disable-next-line no-unused-vars
   const [cookie, setCookie, removeCookie] = useCookies(["token"]);
+  const { setCurrentSong, setSoundPlayed, setIsPaused } =
+    useContext(songContext);
 
   const logout = () => {
     // Remove the 'token' cookie when logging out
     removeCookie("token");
-    // You might want to redirect the user to the login page or perform other actions after logout
+    setCurrentSong(null);
+    setSoundPlayed(null);
+    setIsPaused(null);
   };
 
   return (

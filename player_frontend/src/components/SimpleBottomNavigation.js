@@ -8,6 +8,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import "./SimpleBottomNavigation.css";
+import { Link } from "react-router-dom";
 
 const SimpleBottomNavigation = () => {
   const darkTheme = createTheme({
@@ -62,9 +63,15 @@ const SimpleBottomNavigation = () => {
             setValue(newValue);
           }}
         >
-          <BottomNavigationAction label="Home" icon={<HomeIcon />} />
-          <BottomNavigationAction label="Search" icon={<SearchIcon />} />
-          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
+          <Link to="/home" style={{ textDecoration: "none" }}>
+            <BottomNavigationAction label="Home" icon={<HomeIcon />} />
+          </Link>
+          <Link to="/search-songs" style={{ textDecoration: "none" }}>
+            <BottomNavigationAction label="Search" icon={<SearchIcon />} />
+          </Link>
+          <Link>
+            <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
+          </Link>
         </BottomNavigation>
       </Box>
     </ThemeProvider>

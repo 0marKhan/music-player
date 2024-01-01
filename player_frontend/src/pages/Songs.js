@@ -7,6 +7,7 @@ import BottomPlayerContainer from "../containers/BottomPlayerContainer";
 import SingleSongCard from "../UI/cards/SingleSongCard";
 import "./Songs.css";
 import { Link } from "react-router-dom";
+import SimpleBottomNavigation from "../components/SimpleBottomNavigation";
 
 const Songs = () => {
   const [songData, setSongData] = useState([]);
@@ -50,6 +51,10 @@ const Songs = () => {
               <SingleSongCard info={item} key={item._id} playSound={() => {}} />
             ))}
           </div>
+        </div>
+        {/* for phone view */}
+        <div className="bottom-nav">
+          <SimpleBottomNavigation />
         </div>
       </BottomPlayerContainer>
     </>
