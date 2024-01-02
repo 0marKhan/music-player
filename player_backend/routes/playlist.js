@@ -128,4 +128,37 @@ router.post(
   }
 );
 
+// Delete a playlist by id
+router.delete(
+  "/delete/playlist/:playlistId",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const playlistId = req.params.playlistId;
+    const currentUser = req.user;
+
+    try {
+      // Find the playlist
+      const playlist = await Playlist.findById(playlistId);
+
+      // Check if the playlist exists
+      if (!playlist) {
+        return res.status(404).json({ err: "Playlist not found" });
+      }
+
+      // Check if the current user is the owner
+      if (playlist.owner.toString() !== currentUser._id.toString()) {
+        return res
+          .status(403)
+          .json({ err: "Unauthorized to delete this playlist" });
+      }
+
+      // Delete the playlist
+      await Playlist.findByIdAndDelete(playlistId);
+      return res.status(200).json({ message: "Playlist deleted successfully" });
+    } catch (error) {
+      return res.status(500).json({ error: "Internal server error" });
+    }
+  }
+);
+
 module.exports = router;
