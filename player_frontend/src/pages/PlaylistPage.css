@@ -1,3 +1,8 @@
+.addsong-header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .image-title {
   display: flex;
   margin-bottom: 1rem;
@@ -12,6 +17,16 @@
 .playlist-page-title {
   color: #fff;
   margin-right: 6rem;
+}
+
+.delete-playlist-button {
+  padding-top: 1rem;
+  cursor: pointer;
+  color: #8d8d8d;
+}
+
+.delete-playlist-button:hover {
+  color: #fff;
 }
 
 @media (max-width: 750px) {

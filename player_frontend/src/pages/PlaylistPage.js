@@ -1,22 +1,43 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import BottomPlayerContainer from "../containers/BottomPlayerContainer";
 import "./PlaylistPage.css";
 import "./Songs.css";
-import { makeAuthenticatedGETRequest } from "../utils/serverHelper";
+import {
+  makeAuthenticatedDELETERequest,
+  makeAuthenticatedGETRequest,
+} from "../utils/serverHelper";
 import { Divider } from "@mui/material";
 import SingleSongCard from "../UI/cards/SingleSongCard";
 import SimpleBottomNavigation from "../components/SimpleBottomNavigation";
 
+import DeleteIcon from "@mui/icons-material/Delete";
+
 const PlaylistPage = () => {
   const [playlistDetails, setPlaylistDetails] = useState({});
   const { playlistId } = useParams();
+
+  const navigate = useNavigate();
 
   const dividerStyle = {
     borderColor: "#333",
     borderWidth: "1px",
     width: "90%",
     marginTop: "1rem",
+  };
+
+  // function to delete a playlist
+
+  const handleDelete = async () => {
+    try {
+      await makeAuthenticatedDELETERequest(
+        "/playlist/delete/playlist/" + playlistId
+      );
+      navigate("/home");
+    } catch (error) {
+      console.error("Error deleting playlist:", error);
+      // Handle the error appropriately in your UI
+    }
   };
 
   useEffect(() => {
@@ -57,6 +78,7 @@ const PlaylistPage = () => {
     );
   }
 
+  // when loading to prevent the BottomPlayerContainer to not jump to top
   const placeholder = (
     <div className="songs-container">
       <div className="songs-title-section">
@@ -75,6 +97,9 @@ const PlaylistPage = () => {
         <Link to="/home" className="home-link">
           <h3>Home</h3>
         </Link>
+        <div className="delete-playlist-button" onClick={handleDelete}>
+          <DeleteIcon />
+        </div>
       </div>
 
       {/* renders the song list conditionally if a playlist.id exists */}
