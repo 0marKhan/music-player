@@ -7,6 +7,7 @@ import CloudinaryUpload from "../components/CloudinaryUpload";
 import { makeAuthenticatedPOSTRequest } from "../utils/serverHelper";
 import BottomPlayerContainer from "../containers/BottomPlayerContainer";
 import SimpleBottomNavigation from "../components/SimpleBottomNavigation";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddSong = () => {
   const [name, setName] = useState("");
@@ -19,11 +20,19 @@ const AddSong = () => {
     const response = await makeAuthenticatedPOSTRequest("/song/create", data);
     console.log(response);
 
-    // Reset state values after song creation
-    setName("");
-    setThumbnail("");
-    setPlaylistUrl("");
-    setUploadedSongFileName(null);
+    if (response._id) {
+      toast.success("Song Added Successfully", {
+        bodyClassName: "toastify-success",
+        progressClassName: "toastify-progress-success",
+      });
+      // Reset state values after song creation
+      setName("");
+      setThumbnail("");
+      setPlaylistUrl("");
+      setUploadedSongFileName(null);
+    } else {
+      toast.error("Error adding song");
+    }
   };
 
   const setNameHandler = (event) => {
@@ -35,65 +44,68 @@ const AddSong = () => {
   };
 
   return (
-    <BottomPlayerContainer>
-      <div className="add-song-outer">
-        <div className="addsong-header">
-          <Link to="/home" className="home-link">
-            <h3>Home</h3>
-          </Link>
-        </div>
-        <div className="add-song-container">
-          <h3 className="addsong-title">Upload your music</h3>
-          <div className="addsong-boxes">
-            <TextInput
-              id="outlined-basic"
-              label="Name"
-              variant="outlined"
-              style={{ margin: "1.5rem 0rem 0 0rem" }}
-              value={name}
-              onChange={setNameHandler}
-            />
-            <div className="thumbnail-box">
+    <>
+      <ToastContainer />
+      <BottomPlayerContainer>
+        <div className="add-song-outer">
+          <div className="addsong-header">
+            <Link to="/home" className="home-link">
+              <h3>Home</h3>
+            </Link>
+          </div>
+          <div className="add-song-container">
+            <h3 className="addsong-title">Upload your music</h3>
+            <div className="addsong-boxes">
               <TextInput
                 id="outlined-basic"
-                label="Thumbnail URL"
+                label="Name"
                 variant="outlined"
                 style={{ margin: "1.5rem 0rem 0 0rem" }}
-                value={thumbnail}
-                onChange={setThumbnailHandler}
+                value={name}
+                onChange={setNameHandler}
               />
+              <div className="thumbnail-box">
+                <TextInput
+                  id="outlined-basic"
+                  label="Thumbnail URL"
+                  variant="outlined"
+                  style={{ margin: "1.5rem 0rem 0 0rem" }}
+                  value={thumbnail}
+                  onChange={setThumbnailHandler}
+                />
+              </div>
             </div>
-          </div>
-          <div>
+            <div>
+              {uploadedSongFileName ? (
+                <div className="uploaded-song-name">
+                  {uploadedSongFileName.length <= 35
+                    ? uploadedSongFileName
+                    : `${uploadedSongFileName.substring(0, 32)}...`}
+                </div>
+              ) : (
+                <CloudinaryUpload
+                  setUrl={setPlaylistUrl}
+                  setName={setUploadedSongFileName}
+                />
+              )}
+            </div>
             {uploadedSongFileName ? (
-              <div className="uploaded-song-name">
-                {uploadedSongFileName.length <= 35
-                  ? uploadedSongFileName
-                  : `${uploadedSongFileName.substring(0, 32)}...`}
+              <div>
+                <button className="submit-song-button" onClick={submitSong}>
+                  SUBMIT SONG
+                </button>
               </div>
             ) : (
-              <CloudinaryUpload
-                setUrl={setPlaylistUrl}
-                setName={setUploadedSongFileName}
-              />
+              <div></div>
             )}
           </div>
-          {uploadedSongFileName ? (
-            <div>
-              <button className="submit-song-button" onClick={submitSong}>
-                SUBMIT SONG
-              </button>
-            </div>
-          ) : (
-            <div></div>
-          )}
         </div>
-      </div>
-      {/* for phone view */}
-      <div className="bottom-nav">
-        <SimpleBottomNavigation />
-      </div>
-    </BottomPlayerContainer>
+        {/* for phone view */}
+        <div className="bottom-nav">
+          <SimpleBottomNavigation />
+        </div>
+      </BottomPlayerContainer>
+    </>
   );
 };
 

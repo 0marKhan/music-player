@@ -31,11 +31,7 @@ const Login = () => {
       );
 
       if (!response.err) {
-        console.log(response);
-        toast.success("Success", {
-          bodyClassName: "toastify-success",
-          progressClassName: "toastify-progress-success",
-        });
+        toast.success("Login Successful!");
         // console.log(response);
         // storing the token generated
         const token = response.token;
@@ -45,7 +41,7 @@ const Login = () => {
         const date = new Date();
         // setting the date to after 30 days
         date.setDate(date.getDate() + 30);
-        // making it so the cookie epires after 30 days
+        // making it so the cookie expires after 30 days
         setCookie("token", token, { path: "/", expires: date });
         navigate("/home");
         setErrorCheck(false);
@@ -53,8 +49,8 @@ const Login = () => {
         setErrorCheck(true);
       }
     } catch (error) {
-      console.error("Error during registration:", error);
-      toast.error("Error during registration", error);
+      // console.error("Error during registration:", error);
+      toast.error("Error during login");
     }
   };
 
