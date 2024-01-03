@@ -1,8 +1,8 @@
 /// <reference types="Cypress" />
 
 // CHECKING IF THE MODAL POPS UP
-describe("Clicking on the modal", () => {
-  it("Logs in and redirects to home page", () => {
+describe("create playlist modal", () => {
+  it("opens the modal when clicking on create playlist", () => {
     cy.visit("http://localhost:3000/"); // Visit the login page
 
     // Enter email in the email input by targeting its class
@@ -24,7 +24,7 @@ describe("Clicking on the modal", () => {
     cy.get(".modal-background").should("be.visible");
   });
 
-  it("trying to create a playlist", () => {
+  it("creates a new playlist when you enter a playlist name and URL", () => {
     cy.visit("http://localhost:3000/"); // Visit the login page
 
     // Enter email in the email input by targeting its class

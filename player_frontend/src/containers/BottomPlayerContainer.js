@@ -73,6 +73,8 @@ const BottomPlayerContainer = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentSong && currentSong.track]);
 
+  ////////////////////////////////////////////////////// API CALLS HERE ////////////////////////////////////////////////////////////////////////////////
+
   // for adding song to liked songs
   const addSongToLikedSongs = async () => {
     const songId = currentSong._id;
@@ -98,6 +100,8 @@ const BottomPlayerContainer = ({ children }) => {
       closeAddToPlaylistModal();
     }
   };
+
+  //////////////////////////////////////////////////////// HOWLER.JS LOGIC HERE ///////////////////////////////////////////////////////////////////////////////////////////
 
   const playSound = () => {
     // first checks if there is a valid soundPlayed instance in the useState
@@ -146,6 +150,8 @@ const BottomPlayerContainer = ({ children }) => {
       pauseSound();
     }
   };
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   return (
     <div className="main-container">

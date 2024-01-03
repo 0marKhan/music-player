@@ -7,7 +7,7 @@ import {
   makeAuthenticatedDELETERequest,
   makeAuthenticatedGETRequest,
 } from "../utils/serverHelper";
-import { Divider } from "@mui/material";
+import { Divider, Tooltip } from "@mui/material";
 import SingleSongCard from "../UI/cards/SingleSongCard";
 import SimpleBottomNavigation from "../components/SimpleBottomNavigation";
 
@@ -26,6 +26,7 @@ const PlaylistPage = () => {
     marginTop: "1rem",
   };
 
+  // API CALLS HERE
   // function to delete a playlist
 
   const handleDelete = async () => {
@@ -98,7 +99,9 @@ const PlaylistPage = () => {
           <h3>Home</h3>
         </Link>
         <div className="delete-playlist-button" onClick={handleDelete}>
-          <DeleteIcon />
+          <Tooltip title="Delete Playlist">
+            <DeleteIcon />
+          </Tooltip>
         </div>
       </div>
 
