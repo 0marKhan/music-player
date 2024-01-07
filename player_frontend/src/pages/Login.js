@@ -101,9 +101,7 @@ const Login = () => {
           </PurpleButton>
         </div>
         {/* change to link later */}
-        <div className="forgot-password">
-          <a href="www.google.com">Forgot your password?</a>
-        </div>
+
         <div>
           <p>
             <span className="text-with-link">Don't have an account?</span>
