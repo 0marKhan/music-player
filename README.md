@@ -38,3 +38,14 @@ nodemon index.js
 <p align="center">
     <img src="./readme_images/songs page.png" alt="website image" width="1347"  border="10"/>
 </p>
+
+
+- the songs page shows you all the songs added by the user that is currently logged in
+- when hovering on a song, clicking on the trash icon on the cards right end will delete the song
+- when hovering on a song, a play arrow becomes visible. Clicking on it will make the song play
+
+
+<p align="center">
+    <img src="./readme_images/playing song.png" alt="website image" width="1347"  border="10"/>
+</p>
+
