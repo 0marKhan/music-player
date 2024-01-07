@@ -104,6 +104,7 @@ nodemon index.js
 [![Vercel](https://img.shields.io/badge/-Vercel-black?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com)
 [![Netlify](https://img.shields.io/badge/-Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://www.netlify.com/)
 [![Cypress](https://img.shields.io/badge/-Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white)](https://www.cypress.io/)
+[![Material UI](https://img.shields.io/badge/-Material%20UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white)](https://mui.com/)
 
 
 ## How to get the project working on your device
