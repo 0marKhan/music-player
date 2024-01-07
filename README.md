@@ -31,8 +31,7 @@ nodemon index.js
 
 - A log in and sign up page that has checks to ensure that email is of proper format, and password is greater than 7 characters
 - signing in takes you to the home page displayed above 
-- from the home page you can go to see your songs collection, create a playlist, add a song or add a song
-- the songs page displays all of the users songs 
+- from the home page you can go to see your songs collection, create a playlist, add a song or add a song 
 
 
 <p align="center">
@@ -42,11 +41,18 @@ nodemon index.js
 
 - the songs page shows you all the songs added by the user that is currently logged in
 - when hovering on a song, clicking on the trash icon on the cards right end will delete the song
-- when hovering on a song, a play arrow becomes visible. Clicking on it will make the song play
+
 
 
 <p align="center">
     <img src="./readme_images/playing song.png" alt="website image" width="1347"  border="10"/>
+</p>
+
+- when hovering on a song, a play arrow becomes visible. Clicking on it will make the song play
+- the bottom player in which the song is playing, stays there even when navigating across pages
+
+<p align="center">
+    <img src="./readme_images/create playlist page.png" alt="website image" width="1347"  border="10"/>
 </p>
 
 - from the home page we can also go to the create a playlist link
@@ -55,6 +61,20 @@ nodemon index.js
 - clicking on the create playlist button then creates it
 
 <p align="center">
-    <img src="./readme_images/create playlist page.png" alt="website image" width="1347"  border="10"/>
+    <img src="./readme_images/search song page.png" alt="website image" width="1347"  border="10"/>
 </p>
 
+- from the home page we can also go to the search song page
+- this lets us enter the name of a song added by any user and search for it
+- it can also be played from there
+
+  
+<p align="center">
+    <img src="./readme_images/upload song page.png" alt="website image" width="1347"  border="10"/>
+</p>
+
+
+- from the home page we can also go to the upload song page
+- this lets us enter a song name, followed by the desired thumbnail for the song
+- we also have to enter the audio file for the respective song
+- on clicking add song, a toastify notification should pop up on successfully uploading the song
