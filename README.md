@@ -49,3 +49,8 @@ nodemon index.js
     <img src="./readme_images/playing song.png" alt="website image" width="1347"  border="10"/>
 </p>
 
+- from the home page we can also go to the create a playlist link
+- this creates a modal that lets us enter a playlist name
+- it also lets us enter a thumbnail for the playlist
+- clicking on the create playlist button then creates it
+
