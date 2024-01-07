@@ -24,9 +24,11 @@ nodemon index.js
 ```
 
 ## Frontend
+
 <p align="center">
     <img src="./readme_images/login.png" alt="website image" width="1347"  border="10"/>
 </p>
+
 - A log in and sign up page that has checks to ensure that email is of proper format, and password is greater than 7 characters
 - signing in takes you to the home page displayed above 
 - from the home page you can go to see your songs collection, create a playlist, add a song or add a song
