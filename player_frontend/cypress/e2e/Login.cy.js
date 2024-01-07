@@ -3,7 +3,7 @@
 describe("Login Page", () => {
   it("should render the logo image", () => {
     // to visit the login page
-    cy.visit("http://localhost:3000/");
+    cy.visit("/");
 
     // checks if there is one image in Login page
     cy.get(".roam-logo").should("have.length", 1);
@@ -11,7 +11,7 @@ describe("Login Page", () => {
 
   it("should display - Dont have an account? Sign up to Roam", () => {
     // to visit the login page
-    cy.visit("http://localhost:3000/");
+    cy.visit("/");
 
     // checking if it contains the text
     cy.get(".text-with-link").contains("Don't have an account?");
@@ -21,7 +21,7 @@ describe("Login Page", () => {
   // LOGIN FUNCTIONALITY
   describe("Login functionality", () => {
     it("Logs in and redirects to home page", () => {
-      cy.visit("http://localhost:3000/"); // Visit the login page
+      cy.visit("/"); // Visit the login page
 
       // Enter email in the email input by targeting its class
       cy.get("[class*=MuiInputBase-input]").first().type("user1@gmail.com");

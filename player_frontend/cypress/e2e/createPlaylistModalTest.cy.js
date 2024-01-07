@@ -3,7 +3,7 @@
 // CHECKING IF THE MODAL POPS UP
 describe("create playlist modal", () => {
   it("opens the modal when clicking on create playlist", () => {
-    cy.visit("http://localhost:3000/"); // Visit the login page
+    cy.visit("/"); // Visit the login page
 
     // Enter email in the email input by targeting its class
     cy.get("[class*=MuiInputBase-input]").first().type("user1@gmail.com");
@@ -25,7 +25,7 @@ describe("create playlist modal", () => {
   });
 
   it("creates a new playlist when you enter a playlist name and URL", () => {
-    cy.visit("http://localhost:3000/"); // Visit the login page
+    cy.visit("/"); // Visit the login page
 
     // Enter email in the email input by targeting its class
     cy.get("[class*=MuiInputBase-input]").first().type("user1@gmail.com");

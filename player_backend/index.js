@@ -15,7 +15,7 @@ const port = 4000;
 
 // Custom middleware for setting CORS headers globally
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*"); // Set your appropriate origin here
+  res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
@@ -26,9 +26,9 @@ app.use((req, res, next) => {
   }
   next();
 });
-
-app.use(cors()); // Use cors middleware to allow CORS for all routes //allowing the backend to work with the frontend
+// Use cors middleware to allow CORS for all routes //allowing the backend to work with the frontend
 // converts arriving bodies of data into json for expres
+app.use(cors());
 app.use(express.json());
 
 let mongooseURI = "";
