@@ -2,9 +2,9 @@
 
 ## Lets you add and listen to songs, create playlists, search for songs added in the player and more
 
-## [View the website live](https://prime-place.netlify.app)
+## [View the website live](https://music-player-roam.netlify.app/)
 
-This project is a website built for practicing and utilizing data from API calls, and displaying them on the frontend for to the user to see. The website was made using these steps
+This is a mern stack project, built because I was always interested in trying to make a music player. The website was built using these steps
 
 <p align="center">
     <img src="./prime-place.png" alt="website image" width="1347"  border="10"/>
