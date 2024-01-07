@@ -54,3 +54,7 @@ nodemon index.js
 - it also lets us enter a thumbnail for the playlist
 - clicking on the create playlist button then creates it
 
+<p align="center">
+    <img src="./readme_images/create playlist page.png" alt="website image" width="1347"  border="10"/>
+</p>
+
