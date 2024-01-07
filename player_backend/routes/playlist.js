@@ -48,28 +48,6 @@ router.get(
   }
 );
 
-// Get all playlists created by the currently logged-in user
-router.get(
-  "/user/playlists",
-  passport.authenticate("jwt", { session: false }),
-  async (req, res) => {
-    try {
-      const currentUser = req.user; // Get the currently authenticated user
-      const playlists = await Playlist.find({ owner: currentUser._id });
-
-      if (!playlists || playlists.length === 0) {
-        return res
-          .status(304)
-          .json({ err: "No playlists found for this user" });
-      }
-
-      return res.status(200).json({ playlists });
-    } catch (error) {
-      return res.status(500).json({ error: "Internal server error" });
-    }
-  }
-);
-
 // Get all playlists made by me
 // /get/me
 router.get(
