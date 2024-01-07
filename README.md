@@ -33,5 +33,5 @@ nodemon index.js
 - the songs page displays all of the users songs 
 
 <p align="center">
-    <img src="./readme_images/playlist song page.png" alt="website image" width="1347"  border="10"/>
+    <img src="./readme_images/song page.png" alt="website image" width="1347"  border="10"/>
 </p>
