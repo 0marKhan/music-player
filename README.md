@@ -78,3 +78,18 @@ nodemon index.js
 - this lets us enter a song name, followed by the desired thumbnail for the song
 - we also have to enter the audio file for the respective song
 - on clicking add song, a toastify notification should pop up on successfully uploading the song
+
+
+<p align="center">
+    <img src="./readme_images/add-song-to-playlist.png" alt="website image" width="1347"  border="10"/>
+</p>
+
+- when a song is playing, we can see a button on the bottom player for adding the song to a playlist
+- clicking on it opens a modal
+
+  <p align="center">
+    <img src="./readme_images/adding song to playlist.png" alt="website image" width="1347"  border="10"/>
+</p>
+
+- this modal shows us all the playlists the logged in user has
+- clicking on any of them adds the song to that playlist
