@@ -4,7 +4,7 @@
 
 ## [View the website live](https://music-player-roam.netlify.app/)
 
-This is a mern stack project, built because I was always interested in trying to make a music player. The website was built using these steps
+This is a mern stack project, built because I was always interested in trying to make a music player that lets you play audio files you upload 
 
 <p align="center">
     <img src="./readme_images/home-page.png" alt="website image" width="1347"  border="10"/>
