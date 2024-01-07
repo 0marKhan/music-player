@@ -87,9 +87,37 @@ nodemon index.js
 - when a song is playing, we can see a button on the bottom player for adding the song to a playlist
 - clicking on it opens a modal
 
-  <p align="center">
+<p align="center">
     <img src="./readme_images/adding song to playlist.png" alt="website image" width="1347"  border="10"/>
 </p>
 
 - this modal shows us all the playlists the logged in user has
 - clicking on any of them adds the song to that playlist
+
+
+## Technologies Used
+[![React](https://img.shields.io/badge/-React-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
+[![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://www.w3.org/Style/CSS/Overview.en.html)
+[![Node.js](https://img.shields.io/badge/-Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![Express.js](https://img.shields.io/badge/-Express.js-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
+[![MongoDB](https://img.shields.io/badge/-MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Vercel](https://img.shields.io/badge/-Vercel-black?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com)
+[![Netlify](https://img.shields.io/badge/-Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://www.netlify.com/)
+[![Cypress](https://img.shields.io/badge/-Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white)](https://www.cypress.io/)
+
+
+## How to get the project working on your device
+
+- clone the repository
+   ```sh
+   git clone https://github.com/your_username_/Project-Name.git
+   ```
+- navigate to the backend project directory and install all dependencies
+  ```sh
+   cd player/player_backend
+   npm install
+   ```
+- navigate to the frontend project directory and install all dependencies
+   ```sh
+   cd player/player_frontend
+   npm install
