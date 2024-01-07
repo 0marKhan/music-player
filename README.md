@@ -17,7 +17,7 @@ This is a mern stack project, built because I was always interested in trying to
 - In auth made apis for registering and logging in users
 - In playlist made apis for creating a playlist, getting playlists made by me, adding a song to a playlist and deleting a playlist
 - In song made apis for creating a song, getting a song by name and getting all songs
-- passport is used in routes in which the api should only be made by logged in users
+- passport is used in routes in which the api calls should only be made by logged in users
 - to run the backend 
 ```sh
 nodemon index.js
