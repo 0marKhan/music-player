@@ -7,7 +7,7 @@ import Tooltip from "@mui/material/Tooltip";
 import "./SingleSongCard.css";
 import songContext from "../../contexts/songContext";
 
-const SingleSongCard = ({ info, playSound }) => {
+const SingleSongCard = ({ info, playSound, handleDelete }) => {
   const { currentSong, setCurrentSong } = useContext(songContext);
   // checking if clicking the song changes the song to current song
   console.log(currentSong);
@@ -15,10 +15,10 @@ const SingleSongCard = ({ info, playSound }) => {
   const backgroundImage = `url('${info.thumbnail}')`;
 
   return (
-    // setting the current song to the song clicked
     <div className="song-card-container">
       <div className="song-card-main">
-        {/* for display the play arrow when highlighted */}
+        {/* for displaying the play arrow when highlighted */}
+        {/* setting the current song to the song clicked */}
         <div className="play-song-button" onClick={() => setCurrentSong(info)}>
           <Tooltip title={`play ${info.name}`}>
             <PlayArrowIcon />
@@ -37,7 +37,7 @@ const SingleSongCard = ({ info, playSound }) => {
             <div className="duration">3:44</div>
             <div className="options-dots">
               <Tooltip title="Delete Song">
-                <DeleteIcon />
+                <DeleteIcon onClick={() => handleDelete(info._id)} />
               </Tooltip>
             </div>
           </div>
