@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import Divider from "@mui/material/Divider";
 import { makeAuthenticatedGETRequest } from "../utils/serverHelper";
 import BottomPlayerContainer from "../containers/BottomPlayerContainer";
+import { makeAuthenticatedDELETERequest } from "../utils/serverHelper";
+import { ToastContainer, toast } from "react-toastify";
 
 import SingleSongCard from "../UI/cards/SingleSongCard";
 import "./Songs.css";
@@ -19,18 +21,47 @@ const Songs = () => {
     marginTop: "1rem",
   };
 
-  useEffect(() => {
-    const getData = async () => {
-      const response = await makeAuthenticatedGETRequest("/song/get/mysongs");
-      setSongData(response.data);
-      // console.log(response.data);
-    };
+  // for getting user songs
+  const getSongs = async () => {
+    const response = await makeAuthenticatedGETRequest("/song/get/mysongs");
+    setSongData(response.data);
+    // console.log(response.data);
+  };
 
-    getData();
+  useEffect(() => {
+    getSongs();
   }, []);
+
+  // for deleting a song
+  const handleDelete = async (songId) => {
+    try {
+      const response = await makeAuthenticatedDELETERequest(
+        `/song/delete/${songId}`
+      );
+      if (response.error) {
+        toast.error("Error deleting song");
+      } else {
+        toast.success("Song deleted successfully", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        // get the songs again when one is deleted to get updated list
+        getSongs();
+      }
+    } catch (error) {
+      console.error("Error deleting song:", error);
+      toast.error("An error occurred while deleting the song");
+    }
+  };
 
   return (
     <>
+      <ToastContainer />
       <BottomPlayerContainer>
         <div className="addsong-header">
           <Link to="/home" className="home-link">
@@ -48,7 +79,12 @@ const Songs = () => {
 
           <div className="songs-list">
             {songData.map((item) => (
-              <SingleSongCard info={item} key={item._id} playSound={() => {}} />
+              <SingleSongCard
+                info={item}
+                key={item._id}
+                playSound={() => {}}
+                handleDelete={handleDelete}
+              />
             ))}
           </div>
         </div>

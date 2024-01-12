@@ -72,17 +72,9 @@
   background-color: #f36ca7;
 }
 
-.toastify-progress-success {
-  background: #e30085;
-}
-
 .Toastify__toast {
   background-color: #3f3f3f !important;
   color: white;
-}
-
-.toastify-success svg {
-  fill: #e30085 !important;
 }
 
 .Toastify__close-button > svg {

@@ -19,6 +19,7 @@
   flex-grow: 1;
   overflow-y: auto;
   margin-top: 4rem;
+  margin-bottom: 2rem;
 }
 
 .search-songs {

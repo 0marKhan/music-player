@@ -65,4 +65,33 @@ router.get(
   }
 );
 
+// for deleting a song
+
+// Delete route for a single song by id
+router.delete(
+  "/delete/:songId",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const { songId } = req.params;
+    try {
+      const song = await Song.findById(songId);
+
+      if (!song) {
+        return res.status(404).json({ err: "Song not found" });
+      }
+
+      // Optional: Check if the logged-in user is the owner of the song
+      if (song.artist.toString() !== req.user._id.toString()) {
+        return res.status(401).json({ err: "Unauthorized" });
+      }
+
+      await Song.findByIdAndDelete(songId);
+      return res.status(200).json({ msg: "Song deleted successfully" });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ err: "Server error" });
+    }
+  }
+);
+
 module.exports = router;
