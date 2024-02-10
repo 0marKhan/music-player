@@ -34,7 +34,7 @@
   }
 }
 
-@media screen and (device-width: 768px) and (device-height: 1024px) and (orientation: portrait) {
+/* @media screen and (device-width: 768px) and (device-height: 1024px) and (orientation: portrait) {
   .playlists-display {
     width: 45rem;
     display: grid;
@@ -42,7 +42,7 @@
     gap: 0rem;
     justify-content: center;
   }
-}
+} */
 
 @media (max-width: 415px) {
   .playlists-display {

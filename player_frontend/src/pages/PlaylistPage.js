@@ -10,6 +10,7 @@ import {
 import { Divider, Tooltip } from "@mui/material";
 import SingleSongCard from "../UI/cards/SingleSongCard";
 import SimpleBottomNavigation from "../components/SimpleBottomNavigation";
+import { ToastContainer, toast } from "react-toastify";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -29,7 +30,7 @@ const PlaylistPage = () => {
   // API CALLS HERE
   // function to delete a playlist
 
-  const handleDelete = async () => {
+  const handleDeletePlaylist = async () => {
     try {
       await makeAuthenticatedDELETERequest(
         "/playlist/delete/playlist/" + playlistId
@@ -38,6 +39,41 @@ const PlaylistPage = () => {
     } catch (error) {
       console.error("Error deleting playlist:", error);
       // Handle the error appropriately in your UI
+    }
+  };
+
+  // for getting playlist songs
+  const getPlaylistSongs = async () => {
+    const response = await makeAuthenticatedGETRequest(
+      "/playlist/get/playlist/" + playlistId
+    );
+    setPlaylistDetails(response);
+  };
+
+  // for deleting a song
+  const handleDelete = async (songId) => {
+    try {
+      const response = await makeAuthenticatedDELETERequest(
+        `/song/delete/${songId}`
+      );
+      if (response.error) {
+        toast.error("Error deleting song");
+      } else {
+        toast.success("Song deleted successfully", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        // get the songs again when one is deleted to get updated list
+        getPlaylistSongs();
+      }
+    } catch (error) {
+      console.error("Error deleting song:", error);
+      toast.error("An error occurred while deleting the song");
     }
   };
 
@@ -72,7 +108,11 @@ const PlaylistPage = () => {
 
         <div className="songs-list">
           {playlistDetails.songs.map((item) => (
-            <SingleSongCard info={item} playSound={() => {}} />
+            <SingleSongCard
+              info={item}
+              playSound={() => {}}
+              handleDelete={handleDelete}
+            />
           ))}
         </div>
       </div>
@@ -93,25 +133,31 @@ const PlaylistPage = () => {
   );
 
   return (
-    <BottomPlayerContainer>
-      <div className="addsong-header">
-        <Link to="/home" className="home-link">
-          <h3>Home</h3>
-        </Link>
-        <div className="delete-playlist-button" onClick={handleDelete}>
-          <Tooltip title="Delete Playlist">
-            <DeleteIcon />
-          </Tooltip>
+    <>
+      <ToastContainer />
+      <BottomPlayerContainer>
+        <div className="addsong-header">
+          <Link to="/home" className="home-link">
+            <h3>Home</h3>
+          </Link>
+          <div
+            className="delete-playlist-button"
+            onClick={handleDeletePlaylist}
+          >
+            <Tooltip title="Delete Playlist">
+              <DeleteIcon />
+            </Tooltip>
+          </div>
         </div>
-      </div>
 
-      {/* renders the song list conditionally if a playlist.id exists */}
-      {playlistDetails._id ? songList : placeholder}
-      {/* for phone view */}
-      <div className="bottom-nav">
-        <SimpleBottomNavigation />
-      </div>
-    </BottomPlayerContainer>
+        {/* renders the song list conditionally if a playlist.id exists */}
+        {playlistDetails._id ? songList : placeholder}
+        {/* for phone view */}
+        <div className="bottom-nav">
+          <SimpleBottomNavigation />
+        </div>
+      </BottomPlayerContainer>
+    </>
   );
 };
 

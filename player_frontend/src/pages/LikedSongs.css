@@ -4,3 +4,10 @@
   color: #fff;
   min-height: 100vh;
 }
+
+.fix-msg {
+  color: #fff;
+  text-align: center;
+  margin-top: 4rem;
+  font-size: large;
+}

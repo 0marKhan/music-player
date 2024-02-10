@@ -58,7 +58,9 @@
 .upload-song-button {
   margin-top: 2rem;
   padding: 0.75rem;
-  border-radius: 0.5rem;
+  padding-top: 1.3rem;
+  padding-bottom: 1.3rem;
+  border-radius: 0.3rem;
   border: none;
   background-color: #e30085;
   color: #fff;

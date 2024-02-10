@@ -69,7 +69,7 @@ const SimpleBottomNavigation = () => {
           <Link to="/search-songs" style={{ textDecoration: "none" }}>
             <BottomNavigationAction label="Search" icon={<SearchIcon />} />
           </Link>
-          <Link>
+          <Link to="/liked-songs">
             <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
           </Link>
         </BottomNavigation>

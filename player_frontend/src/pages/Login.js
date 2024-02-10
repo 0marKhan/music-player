@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { makeUnauthenticatedPOSTRequest } from "../utils/serverHelper";
 import { useCookies } from "react-cookie";
-import { ToastContainer, toast } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 
 import "./Login.css";
@@ -31,7 +31,6 @@ const Login = () => {
       );
 
       if (!response.err) {
-        toast.success("Login Successful!");
         // console.log(response);
         // storing the token generated
         const token = response.token;
@@ -50,7 +49,6 @@ const Login = () => {
       }
     } catch (error) {
       // console.error("Error during registration:", error);
-      toast.error("Error during login");
     }
   };
 
@@ -64,7 +62,6 @@ const Login = () => {
 
   return (
     <>
-      <ToastContainer />
       <div className="roam-logo">
         <img src={Logo} alt="logo" />
       </div>

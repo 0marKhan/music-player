@@ -16,10 +16,12 @@ const User = new mongoose.Schema({
     required: true,
   },
 
-  likedSongs: {
-    type: String,
-    ref: "Song",
-  },
+  likedSongs: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Song",
+    },
+  ],
 });
 
 // create a model

@@ -58,12 +58,23 @@
   cursor: pointer;
 }
 
-.options-dots {
+.options-dots,
+.add-to-favourites {
   color: #fff;
   visibility: hidden;
 }
 
+.add-to-favourites {
+  visibility: hidden;
+  padding-right: 2rem;
+}
+
 .song-card-container:hover .options-dots {
+  visibility: visible;
+  cursor: pointer;
+}
+
+.song-card-container:hover .add-to-favourites {
   visibility: visible;
   cursor: pointer;
 }
