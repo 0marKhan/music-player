@@ -26,10 +26,12 @@ const SideNav = ({ openCreatePlaylistModal }) => {
           <span className="nav-content">Add Song</span>
         </li>
       </Link>
-      <li className="nav-item">
-        <FavoriteIcon style={{ fontSize: "1rem" }} />
-        <span className="nav-content">Liked Songs</span>
-      </li>
+      <Link to="/liked-songs">
+        <li className="nav-item">
+          <FavoriteIcon style={{ fontSize: "1rem" }} />
+          <span className="nav-content">Liked Songs</span>
+        </li>
+      </Link>
     </ul>
   );
 };

@@ -26,6 +26,8 @@ import { useCookies } from "react-cookie";
 
 const BottomPlayerContainer = ({ children }) => {
   const [addToPlaylistModalOpen, setAddToPlaylistModalOpen] = useState(false);
+  // for the liking and unliking songs
+  const [isSongLiked, setIsSongLiked] = useState(false);
 
   // gets the current value of song from context
   const {
@@ -75,15 +77,18 @@ const BottomPlayerContainer = ({ children }) => {
 
   ////////////////////////////////////////////////////// API CALLS HERE ////////////////////////////////////////////////////////////////////////////////
 
-  // for adding song to liked songs
-  const addSongToLikedSongs = async () => {
+  // Toggle like/unlike for a song
+  const toggleSongLike = async () => {
     const songId = currentSong._id;
-    // Make an API request to add the song to the user's liked songs
-    const response = await makeAuthenticatedPOSTRequest(
-      "/user/liked-songs/add",
-      { songId }
-    );
-    console.log(response);
+    try {
+      const response = await makeAuthenticatedPOSTRequest(
+        "/user/liked-songs/toggle",
+        { songId }
+      );
+      setIsSongLiked(response.isLiked); // Update state based on response
+    } catch (error) {
+      console.error("Error toggling song like:", error);
+    }
   };
 
   // for adding the song to playlist
@@ -180,7 +185,10 @@ const BottomPlayerContainer = ({ children }) => {
             </div>
             <div className="liked-song-icon-bottom">
               <div className="liked-container">
-                <FavoriteToggleIcon onClick={addSongToLikedSongs} />
+                <FavoriteToggleIcon
+                  isLiked={isSongLiked}
+                  onClick={toggleSongLike}
+                />
               </div>
             </div>
           </div>

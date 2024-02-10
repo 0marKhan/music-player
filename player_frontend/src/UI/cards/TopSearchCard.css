@@ -6,6 +6,7 @@
 .logout-btn {
   width: 4rem;
   color: #fff;
+  font-weight: bolder;
   cursor: pointer;
 }
 
@@ -29,10 +30,15 @@
     margin-left: 1.5rem;
   }
 
+  .logout-btn {
+    font-weight: normal;
+  }
+
   .add-playlist-mobile {
     display: block;
     color: #fff;
     padding: 0.5rem 0 0 1rem;
+    margin-left: 1rem;
   }
 
   .add-song-mobile {
